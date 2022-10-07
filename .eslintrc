@@ -1,0 +1,12 @@
+{
+	"extends": "@infinumjs/eslint-config-react-ts",
+	"overrides": [
+		{
+			"files": ["*.ts", "*.tsx"],
+			"parserOptions": {
+				"project": ["./tsconfig.json"]
+			}
+		}
+	],
+	"parser": "@typescript-eslint/parser"
+}
