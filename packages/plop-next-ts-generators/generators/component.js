@@ -1,4 +1,12 @@
-const { dir, CORE_DOMAIN, SHARED_DOMAIN, FEATURE_DOMAIN, rootDomains, componentTypes } = require('../constants');
+const {
+	dir,
+	CORE_DOMAIN,
+	SHARED_DOMAIN,
+	FEATURE_DOMAIN,
+	rootDomains,
+	MULTI_PART_COMPONENT,
+	componentTypes,
+} = require('../constants');
 
 /**
  * @param {{ base?: string }} config
@@ -64,13 +72,14 @@ module.exports = function component(config) {
 
 			if (!answers) return actions;
 
-			const { rootDomain, name } = answers;
+			const { rootDomain, name, componentType } = answers;
 
 			const isCoreDomain = rootDomain === CORE_DOMAIN;
 			const isSharedDomain = rootDomain === SHARED_DOMAIN;
 			const isFeatureDomain = rootDomain === FEATURE_DOMAIN;
+			const isMultipartComponent = componentType === MULTI_PART_COMPONENT;
 
-
+			const parts = ['button', 'panel', 'icon'];
 
 			if (isCoreDomain) {
 				actions.push({
@@ -78,7 +87,7 @@ module.exports = function component(config) {
 					destination: `${base}/components/{{rootDomain}}/{{pascalCase name}}`,
 					templateFiles: `${dir}/templates/component/{{rootDomain}}/{{componentType}}/**`,
 					base: `${dir}/templates/component/{{rootDomain}}/{{componentType}}`,
-					data: { name },
+					data: isMultipartComponent ? { name, parts } : { name },
 					abortOnFail: true,
 				});
 

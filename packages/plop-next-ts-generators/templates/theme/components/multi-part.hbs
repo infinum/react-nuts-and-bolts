@@ -1,10 +1,10 @@
 import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/styled-system';
 
-const parts = ['container', 'button', 'panel', 'icon'];
+const parts = ['root', 'button', 'panel', 'icon'];
 
 const { definePartsStyle, defineMultiStyleConfig } = createMultiStyleConfigHelpers(parts);
 
-const baseStyleContainer = defineStyle({});
+const baseStyleRoot = defineStyle({});
 
 const baseStyleButton = defineStyle({});
 
@@ -13,7 +13,7 @@ const baseStylePanel = defineStyle({});
 const baseStyleIcon = defineStyle({});
 
 const baseStyle = definePartsStyle({
-	container: baseStyleContainer,
+	root: baseStyleRoot,
 	button: baseStyleButton,
 	panel: baseStylePanel,
 	icon: baseStyleIcon,
@@ -23,7 +23,7 @@ export const {{camelCase name}}Theme = defineMultiStyleConfig({
 	baseStyle,
 	// variants: {
 	// 	ghost: {
-	// 		container: {},
+	// 		root: {},
 	// 		button: {},
 	// 		panel: {},
 	// 		icon: {},
@@ -31,13 +31,13 @@ export const {{camelCase name}}Theme = defineMultiStyleConfig({
 	// },
 	// sizes: {
 	// 	sm: {
-	// 		container: {},
+	// 		root: {},
 	// 		button: {},
 	// 		panel: {},
 	// 		icon: {},
 	// 	},
 	// 	md: {
-	// 		container: {},
+	// 		root: {},
 	// 		button: {},
 	// 		panel: {},
 	// 		icon: {},

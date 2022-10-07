@@ -3,32 +3,59 @@ import {
   forwardRef,
   ThemingProps,
   omitThemingProps,
-  useStyleConfig,
+  useMultiStyleConfig,
   HTMLChakraProps,
 } from '@chakra-ui/react';
 import { __DEV__ } from '@chakra-ui/utils';
 
-export interface I{{pascalCase name}}Props extends HTMLChakraProps<'div'>, ThemingProps {}
+import { {{pascalCase name}}StylesProvider, use{{pascalCase name}}Styles } from './{{pascalCase name}}.context';
+
+export interface I{{pascalCase name}}Props extends HTMLChakraProps<'div'>, ThemingProps {};
 
 export const {{pascalCase name}} = forwardRef<I{{pascalCase name}}Props, 'div'>(function {{pascalCase name}}(
   props,
   ref,
 ) {
-  const styles = useStyleConfig('{{pascalCase name}}', props);
+  const styles = useMultiStyleConfig('{{pascalCase name}}', props);
 
   const {
     // extract components props here
+    children,
     ...rest
   } = omitThemingProps(props);
 
   const componentStyles = {
     // place to add common styles
-    ...styles,
+    ...styles.root,
   };
 
-  return <chakra.div ref={ref} __css={componentStyles} {...rest} />;
+  return (
+    <chakra.div ref={ref} __css={componentStyles} {...rest}>
+      <{{pascalCase name}}StylesProvider value={styles}>
+        {children}
+      </{{pascalCase name}}StylesProvider>
+    </chakra.div>
+  );
 });
 
 if (__DEV__) {
   {{pascalCase name}}.displayName = '{{pascalCase name}}';
 }
+
+{{#each parts}}
+export interface I{{pascalCase ../name}}{{pascalCase this}}Props extends HTMLChakraProps<'div'>, ThemingProps {};
+
+export const {{pascalCase ../name}}{{pascalCase this}} = forwardRef<I{{pascalCase ../name}}{{pascalCase this}}Props, 'div'>(function {{pascalCase ../name}}{{pascalCase this}}(
+  props,
+  ref,
+) {
+  const styles = use{{pascalCase ../name}}Styles();
+
+  return <chakra.div ref={ref} __css={styles.{{camelCase this}} } {...props} />;
+});
+
+if (__DEV__) {
+  {{pascalCase ../name}}{{pascalCase this}}.displayName = '{{pascalCase ../name}}{{pascalCase this}}';
+}
+
+{{/each}}
