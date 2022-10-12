@@ -3,6 +3,7 @@
 	"version": "0.0.0",
 	"description": "A collection of commonly used tools and components that we use everyday at Infinum.",
 	"scripts": {
+		"create:pkg": "plop component",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "Infinum JavaScript Team <hello@infinum.com>",
@@ -18,6 +19,7 @@
 		"eslint-plugin-jsx-a11y": "^6.6.1",
 		"eslint-plugin-react": "^7.31.8",
 		"eslint-plugin-react-hooks": "^4.6.0",
+		"plop": "^3.1.1",
 		"prettier": "^2.7.1"
 	}
 }
