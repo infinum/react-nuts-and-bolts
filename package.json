@@ -3,7 +3,7 @@
 	"version": "0.0.0",
 	"description": "A collection of commonly used tools and components that we use everyday at Infinum.",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"preinstall": "npx only-allow pnpm"
 	},
 	"author": "Infinum JavaScript Team <hello@infinum.com>",
 	"license": "MIT",
