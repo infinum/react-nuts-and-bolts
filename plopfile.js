@@ -1,13 +1,3 @@
-const capitalize = (str) => {
-	return str.charAt(0).toUpperCase() + str.slice(1);
-};
-
-const camelCase = (str) => {
-	return str.replace(/[-_](\w)/g, (_, c) => c.toUpperCase());
-};
-
-const workspaces = ['packages', 'hooks', 'utilities'];
-
 /**
  * @param {import("plop").NodePlopAPI} plop
  */
@@ -25,27 +15,20 @@ module.exports = function main(plop) {
 				name: 'description',
 				message: 'The description of this component:',
 			},
-			{
-				type: 'list',
-				name: 'outDir',
-				message: 'where should this component or package live?',
-				default: 'packages',
-				choices: workspaces,
-			},
 		],
 		actions(answers) {
 			const actions = [];
 
 			if (!answers) return actions;
 
-			const { componentName, description, outDir } = answers;
+			const { componentName, description } = answers;
 
 			actions.push({
 				type: 'addMany',
 				templateFiles: 'plop/component/**',
-				destination: `./{{outDir}}/{{dashCase componentName}}`,
+				destination: `./packages/{{dashCase componentName}}`,
 				base: 'plop/component',
-				data: { description, componentName, outDir },
+				data: { description, componentName },
 				abortOnFail: true,
 			});
 
