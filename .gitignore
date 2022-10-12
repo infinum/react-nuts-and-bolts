@@ -38,8 +38,6 @@ yarn-error.log*
 .env
 
 # other
-dist
-node_modules/
 npm-debug.log
 packages/**/lib
 storybook-static
@@ -52,4 +50,7 @@ packages/**/.rpt2_cache
 packages/**/.rts2_cache*
 packages/**/tsconfig.tsbuildinfo
 tsconfig.tsbuildinfo
+
+# build outputs
+dist/
 
