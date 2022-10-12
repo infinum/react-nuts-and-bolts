@@ -9,15 +9,21 @@
 		"Chakra UI",
 		"Folder Structure"
 	],
-	"main": "index.ts",
+	"main": "src/index.ts",
+	"publishConfig": {
+		"main": "lib/index.js",
+		"typings": "lib/index.d.ts"
+	},
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "tsup",
+		"prepublish": "npm run build"
 	},
 	"author": "Infinum JavaScript Team <hello@infinum.com>",
 	"license": "MIT",
 	"devDependencies": {
 		"@types/react": "~18.0.21",
-		"react": "~18.2.0"
+		"react": "~18.2.0",
+		"tsup": "~6.2.3"
 	},
 	"peerDependencies": {
 		"react": ">=16.0.0"
