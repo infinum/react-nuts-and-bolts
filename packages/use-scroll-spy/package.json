@@ -1,0 +1,25 @@
+{
+	"name": "@infinum/use-scroll-spy",
+	"version": "0.0.1-0",
+	"description": "useScrollSpy hook for React",
+	"keywords": [
+		"Scroll Spy",
+		"React",
+		"hook",
+		"Chakra UI",
+		"Folder Structure"
+	],
+	"main": "index.ts",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Infinum JavaScript Team <hello@infinum.com>",
+	"license": "MIT",
+	"devDependencies": {
+		"@types/react": "~18.0.21",
+		"react": "~18.2.0"
+	},
+	"peerDependencies": {
+		"react": ">=16.0.0"
+	}
+}
