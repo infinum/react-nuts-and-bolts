@@ -35,4 +35,38 @@ module.exports = function main(plop) {
 			return actions;
 		},
 	});
+
+	plop.setGenerator('hook', {
+		description: 'Generates a hook package',
+		prompts: [
+			{
+				type: 'input',
+				name: 'hookName',
+				message: 'Enter hook name:',
+			},
+			{
+				type: 'input',
+				name: 'description',
+				message: 'The description of this hook:',
+			},
+		],
+		actions(answers) {
+			const actions = [];
+
+			if (!answers) return actions;
+
+			const { hookName, description } = answers;
+
+			actions.push({
+				type: 'addMany',
+				templateFiles: 'plop/hook/**',
+				destination: `./packages/{{dashCase hookName}}`,
+				base: 'plop/hook',
+				data: { description, hookName },
+				abortOnFail: true,
+			});
+
+			return actions;
+		},
+	});
 };
