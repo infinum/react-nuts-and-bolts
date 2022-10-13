@@ -1,6 +1,6 @@
 {
 	"name": "@infinum/use-scroll-spy",
-	"version": "0.0.1-0",
+	"version": "1.0.0",
 	"description": "useScrollSpy hook for React",
 	"keywords": [
 		"Scroll Spy",
