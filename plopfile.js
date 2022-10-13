@@ -39,16 +39,8 @@ module.exports = function main(plop) {
 	plop.setGenerator('hook', {
 		description: 'Generates a hook package',
 		prompts: [
-			{
-				type: 'input',
-				name: 'hookName',
-				message: 'Enter hook name:',
-			},
-			{
-				type: 'input',
-				name: 'description',
-				message: 'The description of this hook:',
-			},
+			{ type: 'input', name: 'hookName', message: 'Enter hook name:' },
+			{ type: 'input', name: 'description', message: 'The description of this hook:' },
 		],
 		actions(answers) {
 			const actions = [];
