@@ -1,16 +1,19 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-node_modules/
-/.pnp
+node_modules
+packages/**/node_modules
+.pnp
 .pnp.js
 
 # testing
-coverage/
+coverage
+packages/**/coverage
 
 # next.js
-/.next/
-/out/
+.next
+packages/**/.next
+out
 
 # production
 /build
@@ -34,9 +37,20 @@ yarn-error.log*
 .vercel
 .env
 
-# sitemaps
-public/sitemap*.xml
-public/robots.txt
+# other
+npm-debug.log
+packages/**/lib
+storybook-static
+npm-debug.log*
+packages/**/.env
+*.log
+*.cache
+yarn-error.log
+packages/**/.rpt2_cache
+packages/**/.rts2_cache*
+packages/**/tsconfig.tsbuildinfo
+tsconfig.tsbuildinfo
 
 # build outputs
 dist/
+
