@@ -6,14 +6,15 @@ const {
 	rootDomains,
 	MULTI_PART_COMPONENT,
 	componentTypes,
+	defaultConfig,
 } = require('../constants');
 
 /**
- * @param {{ base?: string }} config
+ * @param {import('../index').Config} config
  * @returns {import("plop").GeneratorConfig}
  */
 module.exports = function component(config) {
-	const base = config?.base || './src';
+	const { baseUrl, componentsUrl } = { ...defaultConfig, ...config };
 
 	return {
 		description: 'Generates a Chakra UI component',
@@ -84,7 +85,7 @@ module.exports = function component(config) {
 			if (isCoreDomain) {
 				actions.push({
 					type: 'addMany',
-					destination: `${base}/components/{{rootDomain}}/{{pascalCase name}}`,
+					destination: `${baseUrl}/${componentsUrl}/{{rootDomain}}/{{pascalCase name}}`,
 					templateFiles: `${dir}/templates/component/{{rootDomain}}/{{componentType}}/**`,
 					base: `${dir}/templates/component/{{rootDomain}}/{{componentType}}`,
 					data: isMultipartComponent ? { name, parts } : { name },
@@ -93,13 +94,13 @@ module.exports = function component(config) {
 
 				actions.push({
 					type: 'add',
-					path: `${base}/styles/theme/components/{{dashCase name}}.ts`,
+					path: `${baseUrl}/styles/theme/components/{{dashCase name}}.ts`,
 					templateFile: `${dir}/templates/theme/components/{{componentType}}.hbs`,
 				});
 
 				actions.push({
 					type: 'modify',
-					path: `${base}/styles/theme/index.ts`,
+					path: `${baseUrl}/styles/theme/index.ts`,
 					pattern: /\/\/ -- PLOP:IMPORT_COMPONENT_THEME --/gi,
 					template: `import \{ {{camelCase name}}Theme as {{pascalCase name}} \} from './components/{{dashCase name}}';\n// -- PLOP:IMPORT_COMPONENT_THEME --`,
 					data: { name },
@@ -107,7 +108,7 @@ module.exports = function component(config) {
 
 				actions.push({
 					type: 'modify',
-					path: `${base}/styles/theme/index.ts`,
+					path: `${baseUrl}/styles/theme/index.ts`,
 					pattern: /\/\/ -- PLOP:REGISTER_COMPONENT_THEME --/gi,
 					template: `{{pascalCase name}},\n		// -- PLOP:REGISTER_COMPONENT_THEME --`,
 					data: { name },
@@ -117,7 +118,7 @@ module.exports = function component(config) {
 			if (isSharedDomain || isFeatureDomain) {
 				actions.push({
 					type: 'addMany',
-					destination: `${base}/components/{{rootDomain}}/{{dashCase subDomain}}/{{pascalCase name}}`,
+					destination: `${baseUrl}/${componentsUrl}/{{rootDomain}}/{{dashCase subDomain}}/{{pascalCase name}}`,
 					templateFiles: `${dir}/templates/component/{{rootDomain}}/{{componentType}}/**`,
 					base: `${dir}/templates/component/{{rootDomain}}/{{componentType}}`,
 					data: { name },

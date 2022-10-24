@@ -11,8 +11,18 @@ const componentTypes = [SINGLE_PART_COMPONENT, MULTI_PART_COMPONENT];
 
 const dir = path.resolve(__dirname);
 
+/**
+ * @constant
+ * @type {import('./index').Config}
+ */
+const defaultConfig = {
+	baseUrl: 'src',
+	componentsUrl: 'components',
+};
+
 module.exports = {
 	dir,
+	defaultConfig,
 
 	CORE_DOMAIN,
 	SHARED_DOMAIN,

@@ -5,14 +5,14 @@ const commands = [INIT_COMMAND, ADD_FOUNDATION_COMMAND, ADD_COMPONENT_COMMAND];
 
 const foundations = ['colors'];
 
-const { componentTypes } = require('../constants');
+const { componentTypes, defaultConfig } = require('../constants');
 
 /**
- * @param {{ base?: string }} config
+ * @param {import('../index').Config} config
  * @returns {import("plop").GeneratorConfig}
  */
 module.exports = function theme(config) {
-	const base = config?.base || './src';
+	const { baseUrl } = { ...defaultConfig, ...config };
 
 	return {
 		description: 'Generate a Chakra UI theme',
@@ -57,7 +57,7 @@ module.exports = function theme(config) {
 			if (command === INIT_COMMAND) {
 				actions.push({
 					type: 'add',
-					path: `${base}/styles/theme/index.ts`,
+					path: `${baseUrl}/styles/theme/index.ts`,
 					templateFile: `${dir}/templates/theme/init/theme.hbs`,
 				});
 			}
@@ -65,13 +65,13 @@ module.exports = function theme(config) {
 			if (command === ADD_FOUNDATION_COMMAND) {
 				actions.push({
 					type: 'add',
-					path: `${base}/styles/theme/foundations/{{dashCase foundation}}.ts`,
+					path: `${baseUrl}/styles/theme/foundations/{{dashCase foundation}}.ts`,
 					templateFile: `${dir}/templates/theme/foundations/{{dashCase foundation}}.hbs`,
 				});
 
 				actions.push({
 					type: 'modify',
-					path: `${base}/styles/theme/index.ts`,
+					path: `${baseUrl}/styles/theme/index.ts`,
 					pattern: /\/\/ -- PLOP:IMPORT_FOUNDATION_THEME --/gi,
 					template: `import {{pascalCase name}} from './foundation/{{dashCase name}}';\n// -- PLOP:IMPORT_FOUNDATION_THEME --`,
 					data: { name },
@@ -79,7 +79,7 @@ module.exports = function theme(config) {
 
 				actions.push({
 					type: 'modify',
-					path: `${base}/styles/theme/index.ts`,
+					path: `${baseUrl}/styles/theme/index.ts`,
 					pattern: /\/\/ -- PLOP:REGISTER_FOUNDATION_THEME --/gi,
 					template: `{{pascalCase name}},\n		// -- PLOP:REGISTER_FOUNDATION_THEME --`,
 					data: { name },
@@ -89,14 +89,14 @@ module.exports = function theme(config) {
 			if (command === ADD_COMPONENT_COMMAND) {
 				actions.push({
 					type: 'add',
-					path: `${base}/styles/theme/components/{{dashCase name}}.ts`,
+					path: `${baseUrl}/styles/theme/components/{{dashCase name}}.ts`,
 					templateFile: `${dir}/templates/theme/components/{{componentType}}.hbs`,
 					data: { name },
 				});
 
 				actions.push({
 					type: 'modify',
-					path: `${base}/styles/theme/index.ts`,
+					path: `${baseUrl}/styles/theme/index.ts`,
 					pattern: /\/\/ -- PLOP:IMPORT_COMPONENT_THEME --/gi,
 					template: `import \{ {{camelCase name}}Theme as {{pascalCase name}} \} from './components/{{dashCase name}}';\n// -- PLOP:IMPORT_COMPONENT_THEME --`,
 					data: { name },
@@ -104,7 +104,7 @@ module.exports = function theme(config) {
 
 				actions.push({
 					type: 'modify',
-					path: `${base}/styles/theme/index.ts`,
+					path: `${baseUrl}/styles/theme/index.ts`,
 					pattern: /\/\/ -- PLOP:REGISTER_COMPONENT_THEME --/gi,
 					template: `{{pascalCase name}},\n		// -- PLOP:REGISTER_COMPONENT_THEME --`,
 					data: { name },
