@@ -61,4 +61,30 @@ module.exports = function main(plop) {
 			return actions;
 		},
 	});
+
+	plop.setGenerator('cli', {
+		description: 'Generates a cli package',
+		prompts: [
+			{ type: 'input', name: 'name', message: 'Enter package name:' },
+			{ type: 'input', name: 'description', message: 'The description of this cli:' },
+		],
+		actions(answers) {
+			const actions = [];
+
+			if (!answers) return actions;
+
+			const { name, description } = answers;
+
+			actions.push({
+				type: 'addMany',
+				templateFiles: 'plop/cli/**',
+				destination: `./packages/{{dashCase name}}`,
+				base: 'plop/cli',
+				data: { description, name },
+				abortOnFail: true,
+			});
+
+			return actions;
+		},
+	});
 };
