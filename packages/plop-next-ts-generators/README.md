@@ -52,9 +52,13 @@ You'll probably need to add this to your tsconfig file:
 ```
 
 ## Component generator
-
-`npm run gen:component`
+To generate a new component, run the following command:  
+```
+npm run gen:component
+```
 
 ## Theme generator
-
-`npm run gen:theme`
+To generate a new theme, run the following command:  
+```
+npm run gen:theme
+```
