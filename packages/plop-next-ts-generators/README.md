@@ -19,11 +19,11 @@ const init = require('@infinum/plop-next-ts-generators');
  * @param {import("plop").NodePlopAPI} plop
  */
 module.exports = function main(plop) {
-	init(plop, { 
-    // Base source code folder, defaults to `./src` but on some projects you need to set it to `./`
+  init(plop, { 
+    // Base source code folder, defaults to `./src` but you can set it to `./`
     // baseUrl: './src',
 
-    // For changing components folder URL or name, defaults to `./components` but you can change it to `./components/ui`
+    // For changing components folder URL or name, defaults to `./components` but you can set it to `./components/ui`
     // componentsUrl: './components'
   });
 };
