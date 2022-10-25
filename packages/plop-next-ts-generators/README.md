@@ -40,6 +40,17 @@ Add scripts to your package.json:
 }
 ```
 
+### ESLint note  
+You'll probably need to add this to your tsconfig file:
+
+```json
+  // in tsconfig.json ...
+  "include": [
+      "plopfile.js",
+      // ...
+  ]
+```
+
 ## Component generator
 
 `npm run gen:component`
