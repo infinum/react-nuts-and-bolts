@@ -45,7 +45,6 @@ You'll probably need to add this to your `tsconfig.json` file:
 
 ```json
   "include": [
-    //...
     "plopfile.js",
   ]
 ```
