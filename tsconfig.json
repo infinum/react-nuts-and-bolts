@@ -16,6 +16,6 @@
 		"allowSyntheticDefaultImports": true,
 		"downlevelIteration": true
 	},
-	"include": ["@types", "packages", "jest.config.js"],
+	"include": ["@types", "packages", "jest.config.js", "plopfile.js"],
 	"exclude": ["**/node_modules", "**/template*"]
 }
