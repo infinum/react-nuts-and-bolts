@@ -19,14 +19,44 @@ const init = require('@infinum/plop-next-ts-generators');
  * @param {import("plop").NodePlopAPI} plop
  */
 module.exports = function main(plop) {
-	init(plop);
+  init(plop, { 
+    // Base source code folder, defaults to `./src` but you can set it to `./`
+    // baseUrl: './src',
+
+    // For changing components folder URL or name, defaults to `./components` but you can set it to `./components/ui`
+    // componentsUrl: './components'
+  });
 };
 ```
 
-## Component generator
+Add scripts to your package.json:
 
-`plop component`
+```json
+{
+  "scripts": {
+    "gen:component": "plop component",
+    "gen:theme": "plop theme"
+  }
+}
+```
+
+### ESLint note  
+You'll probably need to add this to your `tsconfig.json` file:
+
+```json
+  "include": [
+    "plopfile.js",
+  ]
+```
+
+## Component generator
+To generate a new component, run the following command:  
+```
+npm run gen:component
+```
 
 ## Theme generator
-
-`prop theme`
+To generate a new theme, run the following command:  
+```
+npm run gen:theme
+```
