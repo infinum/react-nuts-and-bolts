@@ -9,4 +9,8 @@ module.exports = {
 	},
 	transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$'],
 	setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
+	verbose: true,
+	testEnvironmentOptions: {
+		url: 'http://localhost/',
+	},
 };
