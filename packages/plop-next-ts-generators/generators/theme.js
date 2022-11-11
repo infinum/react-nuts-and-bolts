@@ -3,7 +3,16 @@ const ADD_FOUNDATION_COMMAND = 'add-foundation';
 const ADD_COMPONENT_COMMAND = 'add-component';
 const commands = [INIT_COMMAND, ADD_FOUNDATION_COMMAND, ADD_COMPONENT_COMMAND];
 
-const { dir, foundations, componentTypes, defaultConfig } = require('../constants');
+const {
+	dir,
+	componentTypes,
+	RADIUS_FOUNDATION,
+	SPACING_FOUNDATION,
+	TYPOGRAPHY_FOUNDATION,
+	Z_INDEX_FOUNDATION,
+	foundations,
+	defaultConfig,
+} = require('../constants');
 
 /**
  * @param {import('../index').Config} config
@@ -11,6 +20,8 @@ const { dir, foundations, componentTypes, defaultConfig } = require('../constant
  */
 module.exports = function theme(config) {
 	const { baseUrl } = { ...defaultConfig, ...config };
+
+	console.log(dir);
 
 	return {
 		description: 'Generate a Chakra UI theme',
@@ -52,6 +63,9 @@ module.exports = function theme(config) {
 
 			const { command, name } = answers;
 
+			/**
+			 * Init theme
+			 */
 			if (command === INIT_COMMAND) {
 				actions.push({
 					type: 'add',
@@ -60,30 +74,75 @@ module.exports = function theme(config) {
 				});
 			}
 
+			/**
+			 * Foundation theme generator
+			 */
 			if (command === ADD_FOUNDATION_COMMAND) {
+				const isRadius = answers.foundation === RADIUS_FOUNDATION;
+				const isSpacing = answers.foundation === SPACING_FOUNDATION;
+				const isTypography = answers.foundation === TYPOGRAPHY_FOUNDATION;
+				const isZIndex = answers.foundation === Z_INDEX_FOUNDATION;
+
 				actions.push({
 					type: 'add',
 					path: `${baseUrl}/styles/theme/foundations/{{dashCase foundation}}.ts`,
 					templateFile: `${dir}/templates/theme/foundations/{{dashCase foundation}}.hbs`,
 				});
 
+				let importTemplate = `import \{ {{foundation}} \} from './foundations/{{foundation}}';\n// -- PLOP:IMPORT_FOUNDATION_THEME --`;
+
+				// radius foundation should be imported as radii
+				if (isRadius) {
+					importTemplate = `import \{ radii \} from './foundations/radius';\n// -- PLOP:IMPORT_FOUNDATION_THEME --`;
+				}
+
+				// z-index foundation should be imported as zIndices
+				if (isZIndex) {
+					importTemplate = `import \{ zIndices \} from './foundations/z-index';\n// -- PLOP:IMPORT_FOUNDATION_THEME --`;
+				}
+
 				actions.push({
 					type: 'modify',
 					path: `${baseUrl}/styles/theme/index.ts`,
 					pattern: /\/\/ -- PLOP:IMPORT_FOUNDATION_THEME --/gi,
-					template: `import {{pascalCase name}} from './foundation/{{dashCase name}}';\n// -- PLOP:IMPORT_FOUNDATION_THEME --`,
+					template: importTemplate,
 					data: { name },
 				});
+
+				let registerTemplate = `{{foundation}},\n		// -- PLOP:REGISTER_FOUNDATION_THEME --`;
+
+				// radius foundation should be registered as radii
+				if (isRadius) {
+					registerTemplate = `radii,\n		// -- PLOP:REGISTER_FOUNDATION_THEME --`;
+				}
+
+				// spacing foundation should be renamed to space
+				if (isSpacing) {
+					registerTemplate = `space: {{foundation}},\n		// -- PLOP:REGISTER_FOUNDATION_THEME --`;
+				}
+
+				// typography foundation should be spread
+				if (isTypography) {
+					registerTemplate = `...{{foundation}},\n		// -- PLOP:REGISTER_FOUNDATION_THEME --`;
+				}
+
+				// z-index foundation should be registered to zIndices
+				if (isZIndex) {
+					registerTemplate = `zIndices,\n		// -- PLOP:REGISTER_FOUNDATION_THEME --`;
+				}
 
 				actions.push({
 					type: 'modify',
 					path: `${baseUrl}/styles/theme/index.ts`,
 					pattern: /\/\/ -- PLOP:REGISTER_FOUNDATION_THEME --/gi,
-					template: `{{pascalCase name}},\n		// -- PLOP:REGISTER_FOUNDATION_THEME --`,
+					template: registerTemplate,
 					data: { name },
 				});
 			}
 
+			/**
+			 * Component theme generator
+			 */
 			if (command === ADD_COMPONENT_COMMAND) {
 				actions.push({
 					type: 'add',
