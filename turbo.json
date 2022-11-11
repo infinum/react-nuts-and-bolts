@@ -18,7 +18,7 @@
 			"dependsOn": ["^typecheck"]
 		},
 		"test": {
-			"outputs": ["instrumented/**", "coverage/**", ".nyc_output/**"]
+			"outputs": ["coverage/**"]
 		},
 		"test:watch": {
 			"cache": false
