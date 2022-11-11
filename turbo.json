@@ -16,6 +16,12 @@
 		"typecheck": {
 			"cache": false,
 			"dependsOn": ["^typecheck"]
+		},
+		"test": {
+			"outputs": ["instrumented/**", "coverage/**", ".nyc_output/**"]
+		},
+		"test:watch": {
+			"cache": false
 		}
 	},
 	"globalDependencies": ["tsconfig.json"]

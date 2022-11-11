@@ -6,7 +6,8 @@
 		"preinstall": "npx only-allow pnpm",
 		"prepare": "husky install",
 		"create:pkg": "plop component",
-		"test": "jest"
+		"test": "turbo run test --parallel",
+		"test:watch": "turbo run test:watch"
 	},
 	"author": "Infinum JavaScript Team <hello@infinum.com>",
 	"license": "MIT",
