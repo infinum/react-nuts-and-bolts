@@ -3,9 +3,7 @@ const ADD_FOUNDATION_COMMAND = 'add-foundation';
 const ADD_COMPONENT_COMMAND = 'add-component';
 const commands = [INIT_COMMAND, ADD_FOUNDATION_COMMAND, ADD_COMPONENT_COMMAND];
 
-const foundations = ['colors'];
-
-const { dir, componentTypes, defaultConfig } = require('../constants');
+const { dir, foundations, componentTypes, defaultConfig } = require('../constants');
 
 /**
  * @param {import('../index').Config} config

@@ -1,4 +1,5 @@
 const path = require('path');
+const { getFoundations } = require('./utils');
 
 const CORE_DOMAIN = 'core';
 const SHARED_DOMAIN = 'shared';
@@ -10,6 +11,8 @@ const MULTI_PART_COMPONENT = 'multi-part';
 const componentTypes = [SINGLE_PART_COMPONENT, MULTI_PART_COMPONENT];
 
 const dir = path.resolve(__dirname);
+
+const foundations = getFoundations({ dir });
 
 /**
  * @constant
@@ -32,4 +35,6 @@ module.exports = {
 	SINGLE_PART_COMPONENT,
 	MULTI_PART_COMPONENT,
 	componentTypes,
+
+	foundations,
 };
