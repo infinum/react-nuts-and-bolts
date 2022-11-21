@@ -19,7 +19,7 @@ export const getFileHelper = () => {
 	};
 
 	afterEach(() => {
-		cleanup();
+		// cleanup();
 	});
 
 	const getFilePath = async (path) => {

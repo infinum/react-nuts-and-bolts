@@ -1,10 +1,6 @@
-const INIT_COMMAND = 'init';
-const ADD_FOUNDATION_COMMAND = 'add-foundation';
-const ADD_COMPONENT_COMMAND = 'add-component';
-const commands = [INIT_COMMAND, ADD_FOUNDATION_COMMAND, ADD_COMPONENT_COMMAND];
-
 const {
 	dir,
+	foundationCommands,
 	componentTypes,
 	RADIUS_FOUNDATION,
 	SPACING_FOUNDATION,
@@ -12,6 +8,9 @@ const {
 	Z_INDEX_FOUNDATION,
 	foundations,
 	defaultConfig,
+	ADD_FOUNDATION_COMMAND,
+	ADD_COMPONENT_COMMAND,
+	INIT_COMMAND,
 } = require('../constants');
 
 /**
@@ -28,8 +27,8 @@ module.exports = function theme(config) {
 				type: 'list',
 				name: 'command',
 				message: 'Select a command:',
-				default: commands,
-				choices: commands,
+				default: foundationCommands[0],
+				choices: foundationCommands,
 			},
 			{
 				when: ({ command }) => command === ADD_FOUNDATION_COMMAND,
