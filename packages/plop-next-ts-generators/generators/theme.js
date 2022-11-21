@@ -21,8 +21,6 @@ const {
 module.exports = function theme(config) {
 	const { baseUrl } = { ...defaultConfig, ...config };
 
-	console.log(dir);
-
 	return {
 		description: 'Generate a Chakra UI theme',
 		prompts: [
