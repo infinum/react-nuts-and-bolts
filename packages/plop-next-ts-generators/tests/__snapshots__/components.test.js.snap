@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component generators should generate core single-part component 1`] = `
+"import {
+  chakra,
+  forwardRef,
+  ThemingProps,
+  omitThemingProps,
+  useStyleConfig,
+  HTMLChakraProps,
+} from '@chakra-ui/react';
+import { __DEV__ } from '@chakra-ui/utils';
+
+export interface ITestComponentProps extends HTMLChakraProps<'div'>, ThemingProps {}
+
+export const TestComponent = forwardRef<ITestComponentProps, 'div'>(function TestComponent(
+  props,
+  ref,
+) {
+  const styles = useStyleConfig('TestComponent', props);
+
+  const {
+    // extract components props here
+    ...rest
+  } = omitThemingProps(props);
+
+  const componentStyles = {
+    // place to add common styles
+    ...styles,
+  };
+
+  return <chakra.div ref={ref} __css={componentStyles} {...rest} />;
+});
+
+if (__DEV__) {
+  TestComponent.displayName = 'TestComponent';
+}
+"
+`;
+
+exports[`component generators should generate core single-part component 2`] = `
+"import React, { ComponentProps } from 'react';
+// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
+import { Story, Meta } from '@storybook/react/types-6-0';
+
+import { TestComponent } from './TestComponent';
+
+export default {
+  title: 'UI/core/TestComponent',
+  component: TestComponent,
+} as Meta;
+
+const Template: Story<ComponentProps<typeof TestComponent>> = (args) => <TestComponent {...args} />;
+
+export const Basic = Template.bind({});
+Basic.args = {
+  /* the args you need here will depend on your component */
+};
+"
+`;
+
+exports[`component generators should generate core single-part component 3`] = `
+"import React from 'react';
+
+import { TestComponent } from './TestComponent';
+import { render } from 'test-utils';
+
+describe('TestComponent', () => {
+  it('should matches snapshot', () => {
+    const { asFragment } = render(<TestComponent />);
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+});
+"
+`;
+
+exports[`component generators should generate core single-part component 4`] = `
+"import {
+  defineStyle,
+  defineStyleConfig,
+} from "@chakra-ui/styled-system";
+
+const baseStyle = defineStyle({});
+
+const variantGhost = defineStyle({});
+
+const variantOutline = defineStyle({});
+
+const variantSolid = defineStyle({});
+
+const variantLink = defineStyle({});
+
+const variantUnstyled = defineStyle({});
+
+const variants = {
+  ghost: variantGhost,
+  outline: variantOutline,
+  solid: variantSolid,
+  link: variantLink,
+  unstyled: variantUnstyled,
+}
+
+const sizes = {
+  lg: defineStyle({}),
+  md: defineStyle({}),
+  sm: defineStyle({}),
+  xs: defineStyle({}),
+}
+
+export const testComponentTheme = defineStyleConfig({
+  baseStyle,
+  variants,
+  sizes,
+  defaultProps: {
+    variant: "solid",
+    size: "md",
+    colorScheme: "gray",
+  },
+});
+"
+`;

@@ -1,7 +1,7 @@
 {
 	"root": true,
 	"parser": "@typescript-eslint/parser",
-	"extends": "@infinumjs/eslint-config-react-ts",
+	"extends": "@infinumjs/eslint-config-react-js",
 	"env": {
 		"es2022": true,
 		"browser": true,
@@ -10,6 +10,7 @@
 	"overrides": [
 		{
 			"files": ["packages/**/*.ts", "packages/**/*.tsx"],
+			"extends": "@infinumjs/eslint-config-react-ts",
 			"parserOptions": {
 				"project": ["tsconfig.json"]
 			}
