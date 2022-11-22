@@ -2,7 +2,7 @@ import { resolve } from 'node:path';
 import * as fs from 'node:fs';
 import { render, waitFor } from 'cli-testing-library';
 
-import { getFileHelper } from './file-helper.js';
+import { getFileHelper } from './helpers/file-helper.js';
 import {
 	ADD_COMPONENT_COMMAND,
 	ADD_FOUNDATION_COMMAND,
@@ -17,12 +17,11 @@ describe('theme generators', () => {
 	/** @type {import('cli-testing-library').RenderResult} */
 	let cli;
 
+	const plopfilePath = resolve(__dirname, './helpers/plopfile.js');
+	const outputDir = resolve(__dirname, './output');
+
 	beforeEach(async () => {
-		cli = await render('plop', [
-			`--plopfile=${resolve(__dirname, './plopfile.js')}`,
-			`--dest=${resolve(__dirname, './output')}`,
-			'theme',
-		]);
+		cli = await render('plop', [`--plopfile=${plopfilePath}`, `--dest=${outputDir}`, 'theme']);
 	});
 
 	it('should init theme', async () => {
@@ -50,11 +49,7 @@ describe('theme generators', () => {
 		const { findByText, userEvent } = cli;
 
 		// Init theme file first
-		const themeInitializer = await render('plop', [
-			`--plopfile=${resolve(__dirname, './plopfile.js')}`,
-			`--dest=${resolve(__dirname, './output')}`,
-			'theme',
-		]);
+		const themeInitializer = await render('plop', [`--plopfile=${plopfilePath}`, `--dest=${outputDir}`, 'theme']);
 
 		expect(await themeInitializer.findByText('Select a command:')).toBeInTheConsole();
 
@@ -108,11 +103,7 @@ describe('theme generators', () => {
 		const { findByText, userEvent } = cli;
 
 		// Init theme file first
-		const themeInitializer = await render('plop', [
-			`--plopfile=${resolve(__dirname, './plopfile.js')}`,
-			`--dest=${resolve(__dirname, './output')}`,
-			'theme',
-		]);
+		const themeInitializer = await render('plop', [`--plopfile=${plopfilePath}`, `--dest=${outputDir}`, 'theme']);
 
 		expect(await themeInitializer.findByText('Select a command:')).toBeInTheConsole();
 
@@ -167,11 +158,7 @@ describe('theme generators', () => {
 		const { findByText, userEvent } = cli;
 
 		// Init theme file first
-		const themeInitializer = await render('plop', [
-			`--plopfile=${resolve(__dirname, './plopfile.js')}`,
-			`--dest=${resolve(__dirname, './output')}`,
-			'theme',
-		]);
+		const themeInitializer = await render('plop', [`--plopfile=${plopfilePath}`, `--dest=${outputDir}`, 'theme']);
 
 		expect(await themeInitializer.findByText('Select a command:')).toBeInTheConsole();
 
