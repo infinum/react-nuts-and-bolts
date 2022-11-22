@@ -28,8 +28,216 @@ import { colors } from './foundations/colors';
 // -- PLOP:IMPORT_COMPONENT_THEME --
 
 const overrides = {
+	colors,
+		// -- PLOP:REGISTER_FOUNDATION_THEME --
+	components: {
+		// -- PLOP:REGISTER_COMPONENT_THEME --
+	},
+};
+
+const theme = extendTheme(overrides);
+
+export default theme;
+"
+`;
+
+exports[`theme generators should add multi-part accordion component theme 1`] = `
+"import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/styled-system';
+
+const parts = ['root', 'button', 'panel', 'icon'];
+
+const { definePartsStyle, defineMultiStyleConfig } = createMultiStyleConfigHelpers(parts);
+
+const baseStyleRoot = defineStyle({});
+
+const baseStyleButton = defineStyle({});
+
+const baseStylePanel = defineStyle({});
+
+const baseStyleIcon = defineStyle({});
+
+const baseStyle = definePartsStyle({
+	root: baseStyleRoot,
+	button: baseStyleButton,
+	panel: baseStylePanel,
+	icon: baseStyleIcon,
+});
+
+export const accordionTheme = defineMultiStyleConfig({
+	baseStyle,
+	// variants: {
+	// 	ghost: {
+	// 		root: {},
+	// 		button: {},
+	// 		panel: {},
+	// 		icon: {},
+	// 	}
+	// },
+	// sizes: {
+	// 	sm: {
+	// 		root: {},
+	// 		button: {},
+	// 		panel: {},
+	// 		icon: {},
+	// 	},
+	// 	md: {
+	// 		root: {},
+	// 		button: {},
+	// 		panel: {},
+	// 		icon: {},
+	// 	},
+	// }
+	// defaultProps: {
+	// 	variant: 'solid',
+	// 	size: 'md',
+	// 	colorScheme: 'gray',
+	// },
+});
+"
+`;
+
+exports[`theme generators should add multi-part accordion component theme 2`] = `
+"import { extendTheme } from '@chakra-ui/react';
+
+// -- PLOP:IMPORT_FOUNDATION_THEME --
+
+import { accordionTheme as Accordion } from './components/accordion';
+// -- PLOP:IMPORT_COMPONENT_THEME --
+
+const overrides = {
 	// -- PLOP:REGISTER_FOUNDATION_THEME --
 	components: {
+		Accordion,
+		// -- PLOP:REGISTER_COMPONENT_THEME --
+	},
+};
+
+const theme = extendTheme(overrides);
+
+export default theme;
+"
+`;
+
+exports[`theme generators should add single-part button component theme 1`] = `
+"import { defineStyle, defineStyleConfig } from "@chakra-ui/styled-system";
+
+const baseStyle = defineStyle({});
+
+const variantGhost = defineStyle({});
+
+const variantOutline = defineStyle({});
+
+const variantSolid = defineStyle({});
+
+const variantLink = defineStyle({});
+
+const variantUnstyled = defineStyle({});
+
+const variants = {
+  ghost: variantGhost,
+  outline: variantOutline,
+  solid: variantSolid,
+  link: variantLink,
+  unstyled: variantUnstyled,
+}
+
+const sizes = {
+  lg: defineStyle({}),
+  md: defineStyle({}),
+  sm: defineStyle({}),
+  xs: defineStyle({}),
+}
+
+export const buttonTheme = defineStyleConfig({
+  baseStyle,
+  variants,
+  sizes,
+  defaultProps: {
+    variant: "solid",
+    size: "md",
+    colorScheme: "gray",
+  },
+});
+"
+`;
+
+exports[`theme generators should add single-part button component theme 2`] = `
+"import { extendTheme } from '@chakra-ui/react';
+
+// -- PLOP:IMPORT_FOUNDATION_THEME --
+
+import { buttonTheme as Button } from './components/button';
+// -- PLOP:IMPORT_COMPONENT_THEME --
+
+const overrides = {
+	// -- PLOP:REGISTER_FOUNDATION_THEME --
+	components: {
+		Button,
+		// -- PLOP:REGISTER_COMPONENT_THEME --
+	},
+};
+
+const theme = extendTheme(overrides);
+
+export default theme;
+"
+`;
+
+exports[`theme generators should add single-part component theme 1`] = `
+"import { defineStyle, defineStyleConfig } from "@chakra-ui/styled-system";
+
+const baseStyle = defineStyle({});
+
+const variantGhost = defineStyle({});
+
+const variantOutline = defineStyle({});
+
+const variantSolid = defineStyle({});
+
+const variantLink = defineStyle({});
+
+const variantUnstyled = defineStyle({});
+
+const variants = {
+  ghost: variantGhost,
+  outline: variantOutline,
+  solid: variantSolid,
+  link: variantLink,
+  unstyled: variantUnstyled,
+}
+
+const sizes = {
+  lg: defineStyle({}),
+  md: defineStyle({}),
+  sm: defineStyle({}),
+  xs: defineStyle({}),
+}
+
+export const buttonTheme = defineStyleConfig({
+  baseStyle,
+  variants,
+  sizes,
+  defaultProps: {
+    variant: "solid",
+    size: "md",
+    colorScheme: "gray",
+  },
+});
+"
+`;
+
+exports[`theme generators should add single-part component theme 2`] = `
+"import { extendTheme } from '@chakra-ui/react';
+
+// -- PLOP:IMPORT_FOUNDATION_THEME --
+
+import { buttonTheme as Button } from './components/button';
+// -- PLOP:IMPORT_COMPONENT_THEME --
+
+const overrides = {
+	// -- PLOP:REGISTER_FOUNDATION_THEME --
+	components: {
+		Button,
 		// -- PLOP:REGISTER_COMPONENT_THEME --
 	},
 };
