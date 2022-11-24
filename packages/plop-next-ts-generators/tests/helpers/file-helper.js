@@ -23,7 +23,7 @@ export const getFileHelper = () => {
 	});
 
 	const getFilePath = async (path) => {
-		const expectedFilePath = resolve(__dirname, path);
+		const expectedFilePath = resolve(__dirname, '../', path);
 
 		cleanupFiles.push(expectedFilePath);
 

@@ -76,10 +76,7 @@ describe('TestComponent', () => {
 `;
 
 exports[`component generators should generate core single-part component 4`] = `
-"import {
-  defineStyle,
-  defineStyleConfig,
-} from "@chakra-ui/styled-system";
+"import { defineStyle, defineStyleConfig } from "@chakra-ui/styled-system";
 
 const baseStyle = defineStyle({});
 

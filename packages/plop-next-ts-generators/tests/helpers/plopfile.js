@@ -1,4 +1,4 @@
-const init = require('../index');
+const init = require('../../index');
 
 /**
  * @param {import("plop").NodePlopAPI} plop
