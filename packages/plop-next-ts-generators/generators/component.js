@@ -38,7 +38,7 @@ module.exports = function component(config) {
 					}
 
 					if (rootDomain === FEATURE_DOMAIN) {
-						return 'Enter feature component domain (e.g. todos):';
+						return 'Enter features component domain (e.g. todos):';
 					}
 				},
 			},

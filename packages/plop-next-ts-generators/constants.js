@@ -5,7 +5,7 @@ const dir = path.resolve(__dirname);
 
 const CORE_DOMAIN = 'core';
 const SHARED_DOMAIN = 'shared';
-const FEATURE_DOMAIN = 'feature';
+const FEATURE_DOMAIN = 'features';
 const rootDomains = [CORE_DOMAIN, SHARED_DOMAIN, FEATURE_DOMAIN];
 
 const SINGLE_PART_COMPONENT = 'single-part';
