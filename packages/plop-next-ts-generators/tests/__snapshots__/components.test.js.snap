@@ -117,3 +117,101 @@ export const testComponentTheme = defineStyleConfig({
 });
 "
 `;
+
+exports[`component generators should generate features component 1`] = `
+"import { FC } from 'react';
+import { Box } from '@chakra-ui/react';
+
+export interface ITestFeaturesComponentProps {}
+
+export const TestFeaturesComponent: FC<ITestFeaturesComponentProps> = () => {
+	return <Box></Box>;
+};
+"
+`;
+
+exports[`component generators should generate features component 2`] = `
+"import React, { ComponentProps } from 'react';
+// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
+import { Story, Meta } from '@storybook/react/types-6-0';
+
+import { TestFeaturesComponent } from './TestFeaturesComponent';
+
+export default {
+  title: 'UI/features/TestFeaturesComponent',
+  component: TestFeaturesComponent,
+} as Meta;
+
+const Template: Story<ComponentProps<typeof TestFeaturesComponent>> = (args) => <TestFeaturesComponent {...args} />;
+
+export const Basic = Template.bind({});
+Basic.args = {
+  /* the args you need here will depend on your component */
+};
+"
+`;
+
+exports[`component generators should generate features component 3`] = `
+"import React from 'react';
+
+import { TestFeaturesComponent } from './TestFeaturesComponent';
+import { render } from 'test-utils';
+
+describe('TestFeaturesComponent', () => {
+  it('should matches snapshot', () => {
+    const { asFragment } = render(<TestFeaturesComponent />);
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+});
+"
+`;
+
+exports[`component generators should generate shared component 1`] = `
+"import { FC } from 'react';
+import { Box } from '@chakra-ui/react';
+
+export interface ITestSharedComponentProps {}
+
+export const TestSharedComponent: FC<ITestSharedComponentProps> = () => {
+	return <Box></Box>;
+};
+"
+`;
+
+exports[`component generators should generate shared component 2`] = `
+"import React, { ComponentProps } from 'react';
+// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
+import { Story, Meta } from '@storybook/react/types-6-0';
+
+import { TestSharedComponent } from './TestSharedComponent';
+
+export default {
+  title: 'UI/shared/TestSharedComponent',
+  component: TestSharedComponent,
+} as Meta;
+
+const Template: Story<ComponentProps<typeof TestSharedComponent>> = (args) => <TestSharedComponent {...args} />;
+
+export const Basic = Template.bind({});
+Basic.args = {
+  /* the args you need here will depend on your component */
+};
+"
+`;
+
+exports[`component generators should generate shared component 3`] = `
+"import React from 'react';
+
+import { TestSharedComponent } from './TestSharedComponent';
+import { render } from 'test-utils';
+
+describe('TestSharedComponent', () => {
+  it('should matches snapshot', () => {
+    const { asFragment } = render(<TestSharedComponent />);
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+});
+"
+`;

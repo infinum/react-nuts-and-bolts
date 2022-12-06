@@ -62,4 +62,95 @@ describe('component generators', () => {
 		expect(test).toMatchSnapshot();
 		expect(styles).toMatchSnapshot();
 	});
+
+	it('should generate shared component', async () => {
+		const componentOutputPath = './output/src/components/shared';
+		const componentDomainName = 'test-domain';
+		const componentName = 'TestSharedComponent';
+		const componentFilePath = await getFilePath(
+			`${componentOutputPath}/${componentDomainName}/${componentName}/${componentName}.tsx`
+		);
+		const componentStoryFilePath = await getFilePath(
+			`${componentOutputPath}/${componentDomainName}/${componentName}/${componentName}.stories.tsx`
+		);
+		const componentTestFilePath = await getFilePath(
+			`${componentOutputPath}/${componentDomainName}/${componentName}/${componentName}.test.tsx`
+		);
+
+		const { findByText, userEvent } = cli;
+
+		expect(await findByText('Select a root domain:')).toBeInTheConsole();
+
+		await userEvent.keyboard('[ArrowDown]');
+
+		expect(await findByText('❯ shared')).toBeInTheConsole();
+
+		await userEvent.keyboard('[Enter]');
+
+		expect(await findByText('Enter shared component domain (e.g. buttons):')).toBeInTheConsole();
+
+		await userEvent.keyboard(`${componentDomainName}[Enter]`);
+
+		expect(await findByText('Enter component name (e.g. ShareButton):')).toBeInTheConsole();
+
+		userEvent.keyboard(`${componentName}[Enter]`);
+
+		await waitFor(async () => fs.promises.stat(componentFilePath));
+		await waitFor(async () => fs.promises.stat(componentStoryFilePath));
+		await waitFor(async () => fs.promises.stat(componentTestFilePath));
+
+		const component = fs.readFileSync(componentFilePath, 'utf8');
+		const story = fs.readFileSync(componentStoryFilePath, 'utf8');
+		const test = fs.readFileSync(componentTestFilePath, 'utf8');
+
+		expect(component).toMatchSnapshot();
+		expect(story).toMatchSnapshot();
+		expect(test).toMatchSnapshot();
+	});
+
+	it('should generate features component', async () => {
+		const componentOutputPath = './output/src/components/features';
+		const componentDomainName = 'test-feature';
+		const componentName = 'TestFeaturesComponent';
+		const componentFilePath = await getFilePath(
+			`${componentOutputPath}/${componentDomainName}/${componentName}/${componentName}.tsx`
+		);
+		const componentStoryFilePath = await getFilePath(
+			`${componentOutputPath}/${componentDomainName}/${componentName}/${componentName}.stories.tsx`
+		);
+		const componentTestFilePath = await getFilePath(
+			`${componentOutputPath}/${componentDomainName}/${componentName}/${componentName}.test.tsx`
+		);
+
+		const { findByText, userEvent } = cli;
+
+		expect(await findByText('Select a root domain:')).toBeInTheConsole();
+
+		await userEvent.keyboard('[ArrowDown]');
+		await userEvent.keyboard('[ArrowDown]');
+
+		expect(await findByText('❯ features')).toBeInTheConsole();
+
+		await userEvent.keyboard('[Enter]');
+
+		expect(await findByText('Enter features component domain (e.g. todos):')).toBeInTheConsole();
+
+		await userEvent.keyboard(`${componentDomainName}[Enter]`);
+
+		expect(await findByText('Enter component name (e.g. TodoSection):')).toBeInTheConsole();
+
+		userEvent.keyboard(`${componentName}[Enter]`);
+
+		await waitFor(async () => fs.promises.stat(componentFilePath));
+		await waitFor(async () => fs.promises.stat(componentStoryFilePath));
+		await waitFor(async () => fs.promises.stat(componentTestFilePath));
+
+		const component = fs.readFileSync(componentFilePath, 'utf8');
+		const story = fs.readFileSync(componentStoryFilePath, 'utf8');
+		const test = fs.readFileSync(componentTestFilePath, 'utf8');
+
+		expect(component).toMatchSnapshot();
+		expect(story).toMatchSnapshot();
+		expect(test).toMatchSnapshot();
+	});
 });
