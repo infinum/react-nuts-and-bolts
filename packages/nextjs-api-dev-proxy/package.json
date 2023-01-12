@@ -30,6 +30,7 @@
 		"clean": "rimraf dist .turbo",
 		"typecheck": "tsc --noEmit",
 		"build:fast": "tsup src/index.ts --format=esm,cjs",
+		"prepublish": "pnpm build",
 		"prepack": "clean-package",
 		"postpack": "clean-package restore"
 	},
