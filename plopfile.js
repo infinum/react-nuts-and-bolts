@@ -87,4 +87,30 @@ module.exports = function main(plop) {
 			return actions;
 		},
 	});
+
+	plop.setGenerator('util', {
+		description: 'Generates an util package',
+		prompts: [
+			{ type: 'input', name: 'name', message: 'Enter package name:' },
+			{ type: 'input', name: 'description', message: 'The description of this util:' },
+		],
+		actions(answers) {
+			const actions = [];
+
+			if (!answers) return actions;
+
+			const { name, description } = answers;
+
+			actions.push({
+				type: 'addMany',
+				templateFiles: 'plop/util/**',
+				destination: `./packages/{{dashCase name}}`,
+				base: 'plop/util',
+				data: { description, name },
+				abortOnFail: true,
+			});
+
+			return actions;
+		},
+	});
 };
