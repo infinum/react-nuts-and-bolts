@@ -1,8 +1,6 @@
 # @infinum/scroll-sync
 
-A Quick description of the component
-
-> This is an internal utility, not intended for public usage.
+A component that will sync the scroll between multiple scroll containers
 
 ## Installation
 
@@ -10,6 +8,31 @@ A Quick description of the component
 yarn add @infinum/scroll-sync
 # or
 npm i @infinum/scroll-sync
+```
+
+## Usage
+
+```jsx
+import ScrollSync from '@infinum/scroll-sync';
+
+const App = () => (
+	<ScrollSync>
+		<div className="scrollable">
+			<ScrollSyncPane>
+				<div className="scrollable__content">
+					<p>Scroll me!</p>
+				</div>
+			</ScrollSyncPane>
+		</div>
+		<div className="scrollable">
+			<ScrollSyncPane>
+				<div className="scrollable__content">
+					<p>Scroll me!</p>
+				</div>
+			</ScrollSyncPane>
+		</div>
+	</ScrollSync>
+);
 ```
 
 ## Contribution
@@ -36,3 +59,4 @@ ScrollSync is maintained and sponsored by
     </picture>
   </a>
 </p>
+```
