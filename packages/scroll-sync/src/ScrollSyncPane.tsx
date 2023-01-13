@@ -27,7 +27,7 @@ export const ScrollSyncPane = forwardRef<unknown, IScrollSyncPaneProps>(function
 		};
 	}, [registerPane, unregisterPane]);
 
-	const mergedRefs = useMergeRefs(childRef, ref);
+	const mergedRefs = useMergeRefs(childRef, ref, (children as ReactElement).props.ref);
 
 	if (!isValidElement(children)) {
 		if (process.env.NODE_ENV !== 'production') {
