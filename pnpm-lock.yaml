@@ -82,6 +82,24 @@ importers:
       jest: 29.1.2
       plop: 3.1.1
 
+  packages/scroll-sync:
+    specifiers:
+      '@testing-library/dom': ~8.19.1
+      '@testing-library/jest-dom': ~5.16.5
+      '@testing-library/react': ~13.4.0
+      '@types/testing-library__jest-dom': ~5.14.5
+      clean-package: 2.1.1
+      react: ^18.2.0
+      react-dom: ^18.2.0
+    devDependencies:
+      '@testing-library/dom': 8.19.1
+      '@testing-library/jest-dom': 5.16.5
+      '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
+      '@types/testing-library__jest-dom': 5.14.5
+      clean-package: 2.1.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+
   packages/use-scroll-spy:
     specifiers:
       '@testing-library/jest-dom': ~5.16.5
@@ -1188,6 +1206,20 @@ packages:
       jsonc-parser: 3.2.0
     dev: true
 
+  /@testing-library/dom/8.19.1:
+    resolution: {integrity: sha512-P6iIPyYQ+qH8CvGauAqanhVnjrnRe0IZFSYCeGkSRW9q3u8bdVn2NPI+lasFyVsEQn1J/IFmp5Aax41+dAP9wg==}
+    engines: {node: '>=12'}
+    dependencies:
+      '@babel/code-frame': 7.18.6
+      '@babel/runtime': 7.19.4
+      '@types/aria-query': 5.0.1
+      aria-query: 5.0.2
+      chalk: 4.1.2
+      dom-accessibility-api: 0.5.14
+      lz-string: 1.4.4
+      pretty-format: 27.5.1
+    dev: true
+
   /@testing-library/jest-dom/5.16.5:
     resolution: {integrity: sha512-N5ixQ2qKpi5OLYfwQmUb/5mSV9LneAcaUfp32pn4yCnpb8r/Yz0pXFPck21dIicKmi+ta5WRAknkZCfA8refMA==}
     engines: {node: '>=8', npm: '>=6', yarn: '>=1'}
@@ -1226,9 +1258,27 @@ packages:
       react-test-renderer: 18.2.0_react@18.2.0
     dev: true
 
+  /@testing-library/react/13.4.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-sXOGON+WNTh3MLE9rve97ftaZukN3oNf2KjDy7YTx6hcTO2uuLHuCGynMDhFwGw/jYf4OJ2Qk0i4i79qMNNkyw==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      '@babel/runtime': 7.19.4
+      '@testing-library/dom': 8.19.1
+      '@types/react-dom': 18.0.6
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: true
+
   /@tootallnate/once/2.0.0:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
     engines: {node: '>= 10'}
+    dev: true
+
+  /@types/aria-query/5.0.1:
+    resolution: {integrity: sha512-XTIieEY+gvJ39ChLcB4If5zHtPxt3Syj5rgZR+e1ctpmK8NjPf0zFqsz4JpLJT0xla9GFDKjy8Cpu331nrmE1Q==}
     dev: true
 
   /@types/babel__core/7.1.19:
@@ -1302,7 +1352,7 @@ packages:
     resolution: {integrity: sha512-y+nlX0h87U0R+wsGn6EBuoRWYyv3KFtwRNP3QWp9+k2tJ2/bqcGS3UxD7jgT+tiwJWWq3UsyV4Y+T6rsMT4XMg==}
     dependencies:
       expect: 29.1.2
-      pretty-format: 29.1.2
+      pretty-format: 29.3.1
     dev: true
 
   /@types/jsdom/20.0.1:
@@ -2842,8 +2892,8 @@ packages:
       '@jest/expect-utils': 29.1.2
       jest-get-type: 29.0.0
       jest-matcher-utils: 29.1.2
-      jest-message-util: 29.1.2
-      jest-util: 29.1.2
+      jest-message-util: 29.3.1
+      jest-util: 29.3.1
     dev: true
 
   /extend/3.0.2:
@@ -3844,7 +3894,7 @@ packages:
       chalk: 4.1.2
       diff-sequences: 29.0.0
       jest-get-type: 29.0.0
-      pretty-format: 29.1.2
+      pretty-format: 29.3.1
     dev: true
 
   /jest-docblock/29.0.0:
@@ -3954,7 +4004,7 @@ packages:
       chalk: 4.1.2
       jest-diff: 29.1.2
       jest-get-type: 29.0.0
-      pretty-format: 29.1.2
+      pretty-format: 29.3.1
     dev: true
 
   /jest-message-util/29.1.2:
