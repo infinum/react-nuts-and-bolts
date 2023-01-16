@@ -1,5 +1,5 @@
 {
-	"name": "@infinum/scroll-sync",
+	"name": "@infinum/react-scroll-sync",
 	"version": "1.0.0",
 	"description": "A component that will sync the scroll between multiple scroll containers",
 	"keywords": [
@@ -19,7 +19,7 @@
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/infinum/react-nuts-and-bolts.git",
-		"directory": "packages/scroll-sync"
+		"directory": "packages/react-scroll-sync"
 	},
 	"bugs": {
 		"url": "https://github.com/infinum/react-nuts-and-bolts/issues"

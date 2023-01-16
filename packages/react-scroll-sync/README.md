@@ -1,19 +1,19 @@
-# @infinum/scroll-sync
+# @infinum/react-scroll-sync
 
 A component that will sync the scroll between multiple scroll containers
 
 ## Installation
 
 ```sh
-yarn add @infinum/scroll-sync
+yarn add @infinum/react-scroll-sync
 # or
-npm i @infinum/scroll-sync
+npm i @infinum/react-scroll-sync
 ```
 
 ## Usage
 
 ```jsx
-import ScrollSync from '@infinum/scroll-sync';
+import ScrollSync from '@infinum/react-scroll-sync';
 
 const App = () => (
 	<ScrollSync>

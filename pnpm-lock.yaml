@@ -82,7 +82,7 @@ importers:
       jest: 29.1.2
       plop: 3.1.1
 
-  packages/scroll-sync:
+  packages/react-scroll-sync:
     specifiers:
       '@testing-library/dom': ~8.19.1
       '@testing-library/jest-dom': ~5.16.5

@@ -3,15 +3,13 @@ import {
 	cloneElement,
 	forwardRef,
 	isValidElement,
-	type ReactElement,
-	type RefAttributes,
 	useEffect,
 	useRef,
-	FunctionComponentElement,
-	ForwardedRef,
+	type ReactElement,
+	type RefAttributes,
 } from 'react';
 import { useScrollSync } from './ScrollSyncContext';
-import { useMergeRefs } from './useMergeRefs';
+import { RefType, useMergeRefs } from './useMergeRefs';
 
 export interface IScrollSyncPaneProps {
 	children: ReactElement<RefAttributes<unknown>>;
@@ -29,11 +27,7 @@ export const ScrollSyncPane = forwardRef<unknown, IScrollSyncPaneProps>(function
 		};
 	}, [registerPane, unregisterPane]);
 
-	const mergedRefs = useMergeRefs(
-		childRef,
-		ref,
-		(children as FunctionComponentElement<{ ref: ForwardedRef<unknown> }>).ref as ForwardedRef<unknown>
-	);
+	const mergedRefs = useMergeRefs(childRef, ref, 'ref' in children ? (children.ref as RefType) : null);
 
 	if (!isValidElement(children)) {
 		if (process.env.NODE_ENV !== 'production') {
