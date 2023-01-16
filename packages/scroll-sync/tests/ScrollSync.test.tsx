@@ -76,6 +76,24 @@ describe('useScrollSync', () => {
 		expect(refA.current === refB.current).toBe(true);
 	});
 
+	test('should unregister the pane after unmount', () => {
+		const Component = () => {
+			return (
+				<ScrollSync>
+					<div className="scrollable">
+						<ScrollSyncPane ref={refA}>
+							<div ref={refB} data-testid="pane1" className="scrollable__content">
+								<p>Scroll me!</p>
+							</div>
+						</ScrollSyncPane>
+					</div>
+				</ScrollSync>
+			);
+		};
+
+		render(<Component />);
+	});
+
 	afterEach(() => {
 		(window.requestAnimationFrame as jest.Mock).mockRestore();
 	});
