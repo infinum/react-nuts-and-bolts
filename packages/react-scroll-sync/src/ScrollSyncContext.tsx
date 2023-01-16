@@ -1,8 +1,8 @@
-import { createContext, type MutableRefObject, useContext } from 'react';
+import { createContext, useContext } from 'react';
 
 interface ISyncScrollContext {
-	registerPane: (ref: MutableRefObject<HTMLElement | null>) => void;
-	unregisterPane: (ref: MutableRefObject<HTMLElement | null>) => void;
+	registerPane: (id: string, node: HTMLElement) => void;
+	unregisterPane: (id: string) => void;
 }
 
 const noop = () => {

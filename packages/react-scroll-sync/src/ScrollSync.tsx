@@ -1,50 +1,52 @@
-import { type FC, type MutableRefObject, type ReactNode, useMemo, useRef } from 'react';
+import { useMemo, useRef, type FC, type ReactNode } from 'react';
 import { ScrollSyncProvider } from './ScrollSyncContext';
 
 export interface IScollSyncProps {
 	children: ReactNode;
 }
 
-interface IPanes {
-	ref: MutableRefObject<HTMLElement | null>;
-	listener: () => void;
+interface IPane {
+	node: HTMLElement;
+	listener: EventListener;
 }
 
 export const ScrollSync: FC<IScollSyncProps> = ({ children }) => {
-	const panesRef = useRef<Array<IPanes>>([]);
+	const panesRef = useRef<Record<string, IPane>>({});
 
 	const contextValue = useMemo(
 		() => ({
-			registerPane: (ref: MutableRefObject<HTMLElement | null>) => {
-				if (!ref.current) {
-					return;
-				}
+			registerPane: (id: string, node: HTMLElement) => {
+				const listener = (e: Event) => {
+					if (!e.target) {
+						return;
+					}
 
-				const listener = () => {
 					requestAnimationFrame(() => {
-						panesRef.current.forEach((pane) => {
-							if (ref.current && pane.ref.current && pane.ref !== ref) {
-								pane.ref.current.scrollTop = ref.current.scrollTop;
+						const { scrollTop } = e.target as HTMLElement;
+
+						for (const paneId in panesRef.current) {
+							if (id === paneId) {
+								continue; // skip the current pane
 							}
-						});
+
+							const pane = panesRef.current[paneId];
+							pane.node.scrollTop = scrollTop;
+						}
 					});
 				};
-				panesRef.current.push({ ref, listener });
-				ref.current.addEventListener('scroll', listener);
-			},
-			unregisterPane: (ref: MutableRefObject<HTMLElement | null>) => {
-				if (!ref.current) {
-					return;
-				}
 
-				const paneToRemove = panesRef.current.find((r) => r.ref !== ref);
+				panesRef.current[id] = { node, listener };
+				node.addEventListener('scroll', listener);
+			},
+			unregisterPane: (id: string) => {
+				const paneToRemove = panesRef.current[id];
 
 				if (!paneToRemove) {
 					return;
 				}
 
-				ref.current.removeEventListener('scroll', paneToRemove.listener);
-				panesRef.current = panesRef.current.filter((r) => r.ref !== ref);
+				paneToRemove.node.removeEventListener('scroll', paneToRemove.listener);
+				delete panesRef.current[id];
 			},
 		}),
 		[panesRef]

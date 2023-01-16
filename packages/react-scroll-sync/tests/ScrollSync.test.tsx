@@ -1,15 +1,4 @@
-/**
- * Testing Checklist:
- * - Common use cases snapshotted
- * - Common use cases run through axe/toHaveNoViolations
- * - role/aria/data attributes tested
- * - Component behaviors tested (reacts to events, handles callbacks appropriately, updates state correctly, etc.)
- * - Controlled/uncontrolled use cases tested
- * - Associated utils/helpers/etc. tested
- */
 import { fireEvent, render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-// import '@testing-library/jest-dom';
 import * as React from 'react';
 import { ScrollSync, ScrollSyncPane } from '../src';
 
@@ -74,24 +63,6 @@ describe('useScrollSync', () => {
 		render(<Component />);
 
 		expect(refA.current === refB.current).toBe(true);
-	});
-
-	test('should unregister the pane after unmount', () => {
-		const Component = () => {
-			return (
-				<ScrollSync>
-					<div className="scrollable">
-						<ScrollSyncPane ref={refA}>
-							<div ref={refB} data-testid="pane1" className="scrollable__content">
-								<p>Scroll me!</p>
-							</div>
-						</ScrollSyncPane>
-					</div>
-				</ScrollSync>
-			);
-		};
-
-		render(<Component />);
 	});
 
 	afterEach(() => {
