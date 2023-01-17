@@ -37,7 +37,7 @@ https://www.conventionalcommits.org/ or check out the
    commit type. `scope` is just a short id that describes the scope of work.
 
 1. Make and commit your changes following the
-   [commit convention](https://github.com/chakra-ui/chakra-ui/blob/main/CONTRIBUTING.md#commit-convention).
+   [commit convention](https://github.com/infinum/react-nuts-and-bolts/blob/main/CONTRIBUTING.md#commit-convention).
 
 1. Run `pnpm changeset` to create a detailed description of your changes. This
    will be used to generate a changelog when we publish an update.
