@@ -1,6 +1,6 @@
 {
 	"name": "@infinum/plop-next-ts-generators",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "Next.js generators",
 	"keywords": [
 		"Generators",
