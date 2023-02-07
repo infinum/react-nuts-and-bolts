@@ -1,1 +1,1 @@
-export * from "./use-use-merge-refs";
+export * from './use-merge-refs';
