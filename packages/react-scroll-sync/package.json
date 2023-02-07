@@ -1,0 +1,49 @@
+{
+	"name": "@infinum/react-scroll-sync",
+	"version": "1.0.0",
+	"description": "A component that will sync the scroll between multiple scroll containers",
+	"keywords": [
+		"ScrollSync"
+	],
+	"author": "Infinum JavaScript Team <hello@infinum.com>",
+	"homepage": "https://github.com/infinum/react-nuts-and-bolts#readme",
+	"license": "MIT",
+	"main": "src/index.ts",
+	"sideEffects": false,
+	"files": [
+		"dist"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/infinum/react-nuts-and-bolts.git",
+		"directory": "packages/react-scroll-sync"
+	},
+	"bugs": {
+		"url": "https://github.com/infinum/react-nuts-and-bolts/issues"
+	},
+	"scripts": {
+		"build": "tsup src/index.ts --format=esm,cjs --dts",
+		"dev": "pnpm build:fast -- --watch",
+		"clean": "rimraf dist .turbo",
+		"test": "jest",
+		"typecheck": "tsc --noEmit",
+		"build:fast": "tsup src/index.ts --format=esm,cjs",
+		"prepack": "clean-package",
+		"postpack": "clean-package restore"
+	},
+	"peerDependencies": {
+		"react": ">=18"
+	},
+	"devDependencies": {
+		"@testing-library/dom": "~8.19.1",
+		"@testing-library/jest-dom": "~5.16.5",
+		"@testing-library/react": "~13.4.0",
+		"@types/testing-library__jest-dom": "~5.14.5",
+		"clean-package": "2.1.1",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	}
+}
