@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import * as React from 'react';
 import { useMergeRefs } from '../src';
 
@@ -37,7 +37,7 @@ describe('useMergeRefs', () => {
 		const App = () => {
 			const ref1 = React.useRef<HTMLElement | null>();
 
-			const mergedRefs = useMergeRefs(ref1, noop, null, undefined, {});
+			const mergedRefs = useMergeRefs(ref1, noop, null, undefined, { current: null });
 
 			return <div ref={mergedRefs}>app</div>;
 		};
@@ -45,25 +45,5 @@ describe('useMergeRefs', () => {
 		render(<App />);
 
 		expect(noop).toBeCalled();
-	});
-
-	it('trows if ref is freezed', () => {
-		const freezed = Object.freeze({ current: null });
-
-		const App = () => {
-			const ref1 = React.useRef<HTMLElement | null>();
-
-			const mergedRefs = useMergeRefs(ref1, freezed);
-
-			return <div ref={mergedRefs}>app</div>;
-		};
-
-		try {
-			<App />;
-
-			expect(false).toBe(true);
-		} catch (e) {
-			expect(e).toBeInstanceOf(Error);
-		}
 	});
 });
