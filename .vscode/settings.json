@@ -14,5 +14,6 @@
 	"editor.codeActionsOnSave": ["source.fixAll.format", "source.fixAll.eslint"],
 	"[xml]": {
 		"editor.defaultFormatter": "DotJoshJohnson.xml"
-	}
+	},
+	"typescript.tsdk": "node_modules/typescript/lib"
 }

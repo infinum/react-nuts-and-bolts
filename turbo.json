@@ -18,10 +18,12 @@
 			"dependsOn": ["^typecheck"]
 		},
 		"test": {
-			"outputs": ["coverage/**"]
+			"outputs": ["coverage/**"],
+			"dependsOn": ["@infinum/jest#build"]
 		},
 		"test:watch": {
-			"cache": false
+			"cache": false,
+			"dependsOn": ["@infinum/jest#build"]
 		}
 	},
 	"globalDependencies": ["tsconfig.json"]

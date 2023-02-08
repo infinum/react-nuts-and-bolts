@@ -1,0 +1,49 @@
+{
+	"name": "@infinum/react-test-utils",
+	"version": "0.0.1",
+	"description": "Testing utilities that will help you test your react components and hooks",
+	"keywords": [
+		"ReactTestUtils"
+	],
+	"author": "Infinum JavaScript Team <hello@infinum.com>",
+	"homepage": "https://github.com/infinum/react-nuts-and-bolts#readme",
+	"license": "MIT",
+	"main": "src/index.ts",
+	"sideEffects": false,
+	"files": [
+		"dist"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/infinum/react-nuts-and-bolts.git",
+		"directory": "packages/test-utils"
+	},
+	"bugs": {
+		"url": "https://github.com/infinum/react-nuts-and-bolts/issues"
+	},
+	"scripts": {
+		"build": "tsup src/index.ts --format=esm,cjs --dts",
+		"dev": "pnpm build:fast -- --watch",
+		"clean": "rimraf dist .turbo",
+		"typecheck": "tsc --noEmit",
+		"build:fast": "tsup src/index.ts --format=esm,cjs",
+		"prepack": "clean-package",
+		"postpack": "clean-package restore"
+	},
+	"devDependencies": {
+		"@testing-library/react": ">=13.0.0",
+		"clean-package": "2.1.1",
+		"react-dom": ">=18.0.0",
+		"react": ">=18.0.0",
+		"tsup": "~6.2.3",
+		"typescript": "~4.8.4"
+	},
+	"peerDependencies": {
+		"@testing-library/react": ">=13.0.0",
+		"react": ">=18.0.0",
+		"react-dom": ">=18.0.0"
+	}
+}
