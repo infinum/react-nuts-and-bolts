@@ -16,7 +16,16 @@ export function infinumJest() {
 
 				transform: {
 					// Use SWC to compile tests
-					'^.+\\.(t|j)sx?$': '@swc/jest',
+					'^.+\\.(t|j)sx?$': [
+						'@swc/jest',
+						{
+							jsc: {
+								transform: {
+									react: { runtime: 'automatic' },
+								},
+							},
+						},
+					],
 					...(resolvedJestConfig.transform ?? []),
 				},
 
