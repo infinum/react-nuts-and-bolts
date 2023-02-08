@@ -39,6 +39,7 @@
 	"license": "MIT",
 	"devDependencies": {
 		"@infinum/jest": "workspace:*",
+		"@infinum/react-test-utils": "workspace:*",
 		"@testing-library/jest-dom": "~5.16.5",
 		"@testing-library/react": "~13.4.0",
 		"@types/jest": "~29.1.2",
