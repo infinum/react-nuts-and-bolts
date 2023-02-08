@@ -1,18 +1,13 @@
 {
 	"replace": {
-		"main": "dist/index.cjs.js",
-		"module": "dist/index.esm.js",
-		"types": "dist/index.d.ts",
-		"exports": {
-			".": {
-				"import": "./dist/index.esm.js",
-				"require": "./dist/index.cjs.js"
-			},
-			"./environment": {
-				"import": "./dist/environment.esm.js",
-				"require": "./dist/environment.cjs.js"
-			},
-			"./package.json": "./package.json"
+		"extends": {
+			"exports": {
+				"./environment": {
+					"types": "./dist/environment.d.ts",
+					"import": "./dist/environment.mjs",
+					"require": "./dist/environment.js"
+				}
+			}
 		}
 	}
 }
