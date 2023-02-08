@@ -1,7 +1,7 @@
 {
 	"name": "@infinum/jest",
 	"version": "0.0.1",
-	"description": "Set of util function for easier jest setup that supports both server and browser environemnt.",
+	"description": "Set of util functions for easier jest setup that supports both server and browser environment.",
 	"keywords": [
 		"Jest"
 	],

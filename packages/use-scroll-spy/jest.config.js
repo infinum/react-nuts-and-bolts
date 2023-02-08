@@ -2,10 +2,11 @@ const { infinumJest } = require('@infinum/jest');
 
 const createJestConfig = infinumJest();
 
-const config = createJestConfig({
+/** @type {import('jest').Config} */
+const customConfig = {
 	testEnvironment: '@infinum/jest/environment',
 	collectCoverage: true,
 	collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}'],
-});
+};
 
-module.exports = config;
+module.exports = createJestConfig(customConfig);

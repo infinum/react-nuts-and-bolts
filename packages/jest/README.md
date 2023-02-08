@@ -1,15 +1,61 @@
 # @infinum/jest
 
-A quick description of the util function.
+Set of util functions for easier jest setup that supports both server and browser environment.
 
 > This is an internal utility, not intended for public usage.
 
 ## Installation
 
 ```sh
-yarn add @infinum/jest
+yarn add @infinum/jest jest
 # or
-npm i @infinum/jest
+npm i @infinum/jest jest
+```
+
+## Usage
+
+### Basic
+
+```js
+// jest.config.js
+const { infinumJest } = require('@infinum/jest');
+
+const createJestConfig = infinumJest();
+
+module.exports = createJestConfig();
+```
+
+### With custom config
+
+```js
+// jest.config.js
+const { infinumJest } = require('@infinum/jest');
+
+const createJestConfig = infinumJest();
+
+/** @type {import('jest').Config} */
+const customConfig = {
+	collectCoverage: true,
+	collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}'],
+};
+
+module.exports = createJestConfig(customConfig);
+```
+
+### With @infinum/jest/environment
+
+```js
+// jest.config.js
+const { infinumJest } = require('@infinum/jest');
+
+const createJestConfig = infinumJest();
+
+/** @type {import('jest').Config} */
+const customConfig = {
+	testEnvironment: '@infinum/jest/environment',
+};
+
+module.exports = createJestConfig(customConfig);
 ```
 
 ## Contribution
