@@ -10,6 +10,10 @@ export function infinumJest() {
 			return {
 				...customJestConfig,
 
+				clearMocks: true,
+				coverageDirectory: 'coverage',
+				coverageProvider: 'v8',
+
 				transform: {
 					// Use SWC to compile tests
 					'^.+\\.(t|j)sx?$': '@swc/jest',

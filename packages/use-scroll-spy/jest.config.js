@@ -4,6 +4,7 @@ const createJestConfig = infinumJest();
 
 const config = createJestConfig({
 	testEnvironment: '@infinum/jest/environment',
+	collectCoverage: true,
 	collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}'],
 });
 
