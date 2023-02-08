@@ -1,5 +1,6 @@
+import { renderHookSSR } from '@infinum/react-test-utils';
+import { act, renderHook } from '@testing-library/react';
 import { useScrollSpy } from '../src/use-scroll-spy';
-import { act, renderHook } from '@testing-library/react-hooks';
 
 describe('useScrollSpy', () => {
 	beforeAll(() => {
@@ -9,9 +10,9 @@ describe('useScrollSpy', () => {
 	});
 
 	it('should return undefined on first render', () => {
-		const { result } = renderHook(() => useScrollSpy([]));
+		const { result } = renderHookSSR(() => useScrollSpy([]));
 
-		expect(result.all[0]).toBeUndefined();
+		expect(result.current).toBeUndefined();
 	});
 
 	it('should create new IntersectionObserver instance', () => {

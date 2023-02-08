@@ -3,6 +3,7 @@
 	"version": "0.0.0",
 	"description": "A collection of commonly used tools and components that we use everyday at Infinum.",
 	"scripts": {
+		"build": "turbo run build --parallel",
 		"preinstall": "npx only-allow pnpm",
 		"prepare": "husky install",
 		"create:pkg": "plop component",
