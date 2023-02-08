@@ -8,11 +8,11 @@ export function infinumJest() {
 				(typeof customJestConfig === 'function' ? await customJestConfig() : customJestConfig) ?? {};
 
 			return {
-				...customJestConfig,
-
 				clearMocks: true,
 				coverageDirectory: 'coverage',
 				coverageProvider: 'v8',
+
+				...customJestConfig,
 
 				transform: {
 					// Use SWC to compile tests
