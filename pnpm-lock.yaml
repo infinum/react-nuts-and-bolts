@@ -97,9 +97,26 @@ importers:
       jest: 29.1.2
       plop: 3.1.1
 
+  packages/react-test-utils:
+    specifiers:
+      '@testing-library/react': '>=13.0.0'
+      clean-package: 2.1.1
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      tsup: ~6.2.3
+      typescript: ~4.8.4
+    devDependencies:
+      '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
+      clean-package: 2.1.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      tsup: 6.2.3_typescript@4.8.4
+      typescript: 4.8.4
+
   packages/use-scroll-spy:
     specifiers:
       '@infinum/jest': workspace:*
+      '@infinum/react-test-utils': workspace:*
       '@testing-library/jest-dom': ~5.16.5
       '@testing-library/react': ~13.4.0
       '@types/jest': ~29.1.2
@@ -114,6 +131,7 @@ importers:
       typescript: ~4.8.4
     devDependencies:
       '@infinum/jest': link:../jest
+      '@infinum/react-test-utils': link:../react-test-utils
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
       '@types/jest': 29.1.2
