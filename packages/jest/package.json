@@ -46,7 +46,7 @@
 		"@swc/jest": "~0.2.23",
 		"jest-environment-jsdom": "~29.3.1"
 	},
-	"clean-package": "../../clean-package.config.json",
+	"clean-package": "./clean-package.config.json",
 	"tsup": {
 		"clean": true,
 		"target": "es2019",

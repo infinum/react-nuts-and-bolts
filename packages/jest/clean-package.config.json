@@ -1,13 +1,22 @@
 {
+	"extends": "clean-package/common",
 	"replace": {
-		"extends": {
-			"exports": {
-				"./environment": {
-					"types": "./dist/environment.d.ts",
-					"import": "./dist/environment.mjs",
-					"require": "./dist/environment.js"
-				}
-			}
+		"main": "dist/index.js",
+		"module": "dist/index.mjs",
+		"types": "dist/index.d.ts",
+		"exports": {
+			".": {
+				"types": "./dist/index.d.ts",
+				"import": "./dist/index.mjs",
+				"require": "./dist/index.js"
+			},
+			"./environment": {
+				"types": "./dist/environment.d.ts",
+				"import": "./dist/environment.mjs",
+				"require": "./dist/environment.js"
+			},
+			"./package.json": "./package.json"
 		}
-	}
+	},
+	"remove": ["clean-package", "scripts", "tsup"]
 }

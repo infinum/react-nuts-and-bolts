@@ -1,4 +1,5 @@
 {
+	"extends": "clean-package/common",
 	"replace": {
 		"main": "dist/index.js",
 		"module": "dist/index.mjs",
@@ -11,5 +12,6 @@
 			},
 			"./package.json": "./package.json"
 		}
-	}
+	},
+	"remove": ["clean-package", "scripts", "tsup"]
 }
