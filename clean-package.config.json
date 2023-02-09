@@ -10,11 +10,6 @@
 				"import": "./dist/index.mjs",
 				"require": "./dist/index.js"
 			},
-			"./environment": {
-				"types": "./dist/environment.d.ts",
-				"import": "./dist/environment.mjs",
-				"require": "./dist/environment.js"
-			},
 			"./package.json": "./package.json"
 		}
 	},

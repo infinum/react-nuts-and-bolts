@@ -1,4 +1,4 @@
-const { infinumJest } = require('@infinum/jest');
+const { infinumJest } = require('@infinum/jest/dist');
 
 const createJestConfig = infinumJest();
 
