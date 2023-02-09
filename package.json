@@ -8,7 +8,11 @@
 		"prepare": "husky install",
 		"create:pkg": "plop component",
 		"test": "turbo run test --parallel",
-		"test:watch": "turbo run test:watch"
+		"test:watch": "turbo run test:watch",
+		"version": "changeset version",
+		"release": "changeset publish",
+		"version:dev": "changeset version --snapshot dev",
+		"release:dev": "changeset publish --tag dev"
 	},
 	"author": "Infinum JavaScript Team <hello@infinum.com>",
 	"license": "MIT",
@@ -42,5 +46,10 @@
 			"react": "^18.2.0",
 			"react-dom": "^18.2.0"
 		}
+	},
+	"dependencies": {
+		"@changesets/cli": "~2.26.0",
+		"@commitlint/cli": "~17.4.2",
+		"@commitlint/config-conventional": "~17.4.2"
 	}
 }
