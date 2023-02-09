@@ -1,9 +1,9 @@
 {
-	"name": "@infinum/nextjs-api-dev-proxy",
-	"version": "1.0.0",
-	"description": "Development API proxy for Next.js pages",
+	"name": "@infinum/react-test-utils",
+	"version": "0.0.1",
+	"description": "Testing utilities that will help you test your react components and hooks",
 	"keywords": [
-		"NextjsApiDevProxy"
+		"ReactTestUtils"
 	],
 	"author": "Infinum JavaScript Team <hello@infinum.com>",
 	"homepage": "https://github.com/infinum/react-nuts-and-bolts#readme",
@@ -19,7 +19,7 @@
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/infinum/react-nuts-and-bolts.git",
-		"directory": "packages/nextjs-api-dev-proxy"
+		"directory": "packages/test-utils"
 	},
 	"bugs": {
 		"url": "https://github.com/infinum/react-nuts-and-bolts/issues"
@@ -30,29 +30,20 @@
 		"clean": "rimraf dist .turbo",
 		"typecheck": "tsc --noEmit",
 		"build:fast": "tsup src/index.ts --format=esm,cjs",
-		"prepublish": "pnpm build",
 		"prepack": "clean-package",
 		"postpack": "clean-package restore"
 	},
 	"devDependencies": {
+		"@testing-library/react": ">=13.0.0",
 		"clean-package": "2.1.1",
-		"http-proxy-middleware": "2.0.6",
-		"next": "~13.1.1",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
+		"react-dom": ">=18.0.0",
+		"react": ">=18.0.0",
 		"tsup": "~6.2.3",
 		"typescript": "~4.8.4"
 	},
 	"peerDependencies": {
-		"next": ">=12"
-	},
-	"clean-package": "../../clean-package.config.json",
-	"tsup": {
-		"clean": true,
-		"target": "es2019",
-		"format": [
-			"cjs",
-			"esm"
-		]
+		"@testing-library/react": ">=13.0.0",
+		"react": ">=18.0.0",
+		"react-dom": ">=18.0.0"
 	}
 }

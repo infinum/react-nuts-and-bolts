@@ -39,8 +39,8 @@ if (__DEV__) {
 `;
 
 exports[`component generators should generate core single-part component 2`] = `
-"import React, { ComponentProps } from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
+"import { ComponentMeta, ComponentStory } from '@storybook/react';
+
 import { Story, Meta } from '@storybook/react/types-6-0';
 
 import { TestComponent } from './TestComponent';
@@ -48,9 +48,9 @@ import { TestComponent } from './TestComponent';
 export default {
   title: 'UI/core/TestComponent',
   component: TestComponent,
-} as Meta;
+} as ComponentMeta<typeof TestComponent>;
 
-const Template: Story<ComponentProps<typeof TestComponent>> = (args) => <TestComponent {...args} />;
+const Template: ComponentStory<typeof TestComponent> = (args) => <TestComponent {...args} />;
 
 export const Basic = Template.bind({});
 Basic.args = {
@@ -131,18 +131,16 @@ export const TestFeaturesComponent: FC<ITestFeaturesComponentProps> = () => {
 `;
 
 exports[`component generators should generate features component 2`] = `
-"import React, { ComponentProps } from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+"import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { TestFeaturesComponent } from './TestFeaturesComponent';
 
 export default {
   title: 'UI/features/TestFeaturesComponent',
   component: TestFeaturesComponent,
-} as Meta;
+} as ComponentMeta<typeof TestFeaturesComponent>;
 
-const Template: Story<ComponentProps<typeof TestFeaturesComponent>> = (args) => <TestFeaturesComponent {...args} />;
+const Template: ComponentStory<typeof TestFeaturesComponent> = (args) => <TestFeaturesComponent {...args} />;
 
 export const Basic = Template.bind({});
 Basic.args = {
@@ -180,18 +178,16 @@ export const TestSharedComponent: FC<ITestSharedComponentProps> = () => {
 `;
 
 exports[`component generators should generate shared component 2`] = `
-"import React, { ComponentProps } from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+"import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { TestSharedComponent } from './TestSharedComponent';
 
 export default {
   title: 'UI/shared/TestSharedComponent',
   component: TestSharedComponent,
-} as Meta;
+} as ComponentMeta<typeof TestSharedComponent>;
 
-const Template: Story<ComponentProps<typeof TestSharedComponent>> = (args) => <TestSharedComponent {...args} />;
+const Template: ComponentStory<typeof TestSharedComponent> = (args) => <TestSharedComponent {...args} />;
 
 export const Basic = Template.bind({});
 Basic.args = {
