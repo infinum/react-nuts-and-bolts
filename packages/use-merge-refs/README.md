@@ -1,15 +1,15 @@
-# @infinum/react-test-utils
+# @infinum/use-merge-refs
 
-A quick description of the util function.
+A quick description of the hook.
 
 > This is an internal utility, not intended for public usage.
 
 ## Installation
 
 ```sh
-yarn add @infinum/test-utils
+yarn add @infinum/use-merge-refs
 # or
-npm i @infinum/test-utils
+npm i @infinum/use-merge-refs
 ```
 
 ## Contribution
@@ -22,7 +22,7 @@ This project is licensed under the terms of the [MIT license](https://github.com
 
 # Credits
 
-`testUtils` is maintained and sponsored by
+`useMergeRefs` is maintained and sponsored by
 [Infinum](https://www.infinum.com).
 
 <p align="center">
