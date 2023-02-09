@@ -1,4 +1,4 @@
-# @infinum/test-utils
+# @infinum/react-test-utils
 
 A quick description of the util function.
 
