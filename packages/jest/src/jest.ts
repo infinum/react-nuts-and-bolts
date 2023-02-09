@@ -12,7 +12,7 @@ export function infinumJest() {
 				coverageDirectory: 'coverage',
 				coverageProvider: 'v8',
 
-				...customJestConfig,
+				...resolvedJestConfig,
 
 				transform: {
 					// Use SWC to compile tests
