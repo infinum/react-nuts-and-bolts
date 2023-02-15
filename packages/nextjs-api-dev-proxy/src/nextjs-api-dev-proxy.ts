@@ -1,14 +1,37 @@
 import { createProxyMiddleware, Options } from 'http-proxy-middleware';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-export const createProxy = (apiUrl: Options['target'], options?: Omit<Options, 'apiUrl'>) => {
+interface ICreateProxyOptions extends Omit<Options, 'apiUrl'> {
+	/**
+	 * Used for disabling the proxy. By default it's enabled only in development.
+	 *
+	 * @default process.env.NODE_ENV !== 'development'
+	 *
+	 * @example
+	 *
+	 * createProxy('http://localhost:3000', {
+	 *   disable: NODE_ENV === 'production'
+	 * })
+	 *
+	 * @example
+	 *
+	 * createProxy('http://localhost:3000', {
+	 *   disable: (req) => req.headers['x-skip-proxy'] === 'true'
+	 * })
+	 */
+	disable?: boolean | ((req: NextApiRequest) => boolean);
+}
+
+export const createProxy = (apiUrl: Options['target'], options: ICreateProxyOptions = {}) => {
+	const { disable = process.env.NODE_ENV !== 'development', ...proxyOptions } = options;
+
 	const proxy = createProxyMiddleware({
 		target: apiUrl,
 		changeOrigin: true,
 		logLevel: 'debug',
 		cookieDomainRewrite: 'localhost',
 		pathRewrite: { '^/api': '/' },
-		...options,
+		...proxyOptions,
 		onProxyRes: (proxyRes, ...rest) => {
 			// You can manipulate the cookie here
 
@@ -23,19 +46,17 @@ export const createProxy = (apiUrl: Options['target'], options?: Omit<Options, '
 
 			proxyRes.headers['set-cookie'] = adaptCookiesForLocalhost;
 
-			options?.onProxyRes?.(proxyRes, ...rest);
+			proxyOptions?.onProxyRes?.(proxyRes, ...rest);
 		},
 		onError: (err, ...rest) => {
 			console.error(err);
 
-			options?.onError?.(err, ...rest);
+			proxyOptions?.onError?.(err, ...rest);
 		},
 	}) as (req: NextApiRequest, res: NextApiResponse<unknown>) => void;
 
 	return function handler(req: NextApiRequest, res: NextApiResponse<unknown>) {
-		// Don't allow requests to hit the proxy when not in development mode
-		// NextJS doesn't allow conditional API routes
-		if (process.env.NODE_ENV !== 'development') {
+		if (typeof disable === 'function' ? disable(req) : disable) {
 			return res.status(404).json({ message: 'Not found' });
 		}
 
