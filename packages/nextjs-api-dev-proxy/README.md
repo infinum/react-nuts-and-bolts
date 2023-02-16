@@ -82,9 +82,9 @@ export const config = {
 
 The options extend the [http-proxy-middleware](https://www.npmjs.com/package/http-proxy-middleware) options.
 
-| Name      | Type      | Default                              | Description                               |
-| --------- | --------- | ------------------------------------ | ----------------------------------------- | -------------- |
-| `disable` | `boolean  |  ((req: NextApiRequest) => boolean)` | `process.env.NODE_ENV !== 'development''` | Disable proxy. |
+| Name      | Type                                            | Default                                   | Description    |
+| --------- | ----------------------------------------------- | ----------------------------------------- | -------------- |
+| `disable` | `boolean \| ((req: NextApiRequest) => boolean)` | `process.env.NODE_ENV !== 'development''` | Disable proxy. |
 
 ## Contribution
 
