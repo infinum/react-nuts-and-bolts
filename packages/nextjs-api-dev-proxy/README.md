@@ -76,6 +76,16 @@ export const config = {
 };
 ```
 
+## API
+
+### options
+
+The options extend the [http-proxy-middleware](https://www.npmjs.com/package/http-proxy-middleware) options.
+
+| Name      | Type      | Default                              | Description                               |
+| --------- | --------- | ------------------------------------ | ----------------------------------------- | -------------- |
+| `disable` | `boolean  |  ((req: NextApiRequest) => boolean)` | `process.env.NODE_ENV !== 'development''` | Disable proxy. |
+
 ## Contribution
 
 Yes please! See the [contributing guidelines](https://github.com/infinum/react-nuts-and-bolts/blob/master/CONTRIBUTING.md) for details.
