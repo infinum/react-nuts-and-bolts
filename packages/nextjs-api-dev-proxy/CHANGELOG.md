@@ -1,6 +1,6 @@
 # @infinum/nextjs-api-dev-proxy
 
-## 1.1.0
+## 1.1.1
 
 ### Minor Changes
 
