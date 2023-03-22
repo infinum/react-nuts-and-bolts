@@ -59,5 +59,8 @@
 			"src/index.ts",
 			"src/environment.ts"
 		]
+	},
+	"engines": {
+		"node": ">=18.0.0"
 	}
 }
