@@ -2,4 +2,4 @@
 '@infinum/jest': minor
 ---
 
-implement jsdom fetch wokaround
+implement jsdom fetch workaround
