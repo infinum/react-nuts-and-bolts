@@ -14,7 +14,7 @@ npm i @infinum/nextjs-api-dev-proxy
 
 ```ts
 // pages/api/[[...slug]].ts
-import { createProxy } from '@/utils/proxy/proxy';
+import { createProxy } from '@infinum/nextjs-api-dev-proxy';
 
 export default createProxy(process.env.API_URL);
 
@@ -30,7 +30,7 @@ export const config = {
 
 ```ts
 // pages/api/[[...slug]].ts
-import { createProxy } from '@/utils/proxy/proxy';
+import { createProxy } from '@infinum/nextjs-api-dev-proxy';
 
 let apiUrl: string;
 switch (process.env.API_PROXY) {
@@ -59,7 +59,7 @@ export const config = {
 
 ```ts
 // pages/api/some/path/[[...slug]].ts
-import { createProxy } from '@/utils/proxy/proxy';
+import { createProxy } from '@infinum/nextjs-api-dev-proxy';
 
 export default createProxy(process.env.API_URL, {
 	pathRewrite: {
