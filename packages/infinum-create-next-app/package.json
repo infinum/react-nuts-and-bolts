@@ -1,0 +1,45 @@
+{
+	"name": "@infinum/create-next-app",
+	"version": "1.0.0",
+	"description": "Create Infinum Next.js-powered React apps with one command",
+	"main": "index.js",
+	"author": "Infinum JavaScript Team <hello@infinum.com>",
+	"license": "MIT",
+	"keywords": [
+		"react",
+		"next",
+		"next.js"
+	],
+	"bin": {
+		"create-next-app": "./dist/index.js"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"preinstall": "npx only-allow pnpm",
+		"dev": "ncc build ./index.ts -w -o dist/",
+		"prerelease": "rimraf ./dist/",
+		"release": "ncc build ./index.ts -o ./dist/ --minify --no-cache --no-source-map-register",
+		"prepublishOnly": "cd ../../ && turbo run build",
+		"build": "pnpm release"
+	},
+	"engines": {
+		"node": ">=16.0.0"
+	},
+	"devDependencies": {
+		"@types/ci-info": "^3.1.0",
+		"@types/node": "^18.16.0",
+		"@types/prompts": "^2.4.4",
+		"@types/validate-npm-package-name": "^4.0.0",
+		"@vercel/ncc": "^0.36.1",
+		"chalk": "^5.2.0",
+		"ci-info": "^3.8.0",
+		"commander": "^10.0.1",
+		"prettier": "^2.8.8",
+		"prompts": "^2.4.2",
+		"rimraf": "^5.0.0",
+		"typescript": "^5.0.4",
+		"validate-npm-package-name": "^5.0.0"
+	}
+}
