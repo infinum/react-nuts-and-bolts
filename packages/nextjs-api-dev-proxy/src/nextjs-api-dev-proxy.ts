@@ -28,30 +28,37 @@ export const createProxy = (apiUrl: Options['target'], options: ICreateProxyOpti
 	const proxy = createProxyMiddleware({
 		target: apiUrl,
 		changeOrigin: true,
-		logLevel: 'debug',
 		cookieDomainRewrite: 'localhost',
 		pathRewrite: { '^/api': '/' },
 		...proxyOptions,
-		onProxyRes: (proxyRes, ...rest) => {
-			// You can manipulate the cookie here
+		on: {
+			proxyRes: (proxyRes: any, req: any, res: any) => {
+				// You can manipulate the cookie here
 
-			if (!proxyRes.headers['set-cookie']) {
-				return;
-			}
+				if (!proxyRes.headers['set-cookie']) {
+					return;
+				}
 
-			// For example you can remove secure and SameSite security flags so browser can save the cookie in dev env
-			const adaptCookiesForLocalhost = proxyRes.headers['set-cookie'].map((cookie) =>
-				cookie.replace(/; secure/gi, '').replace(/; SameSite=None/gi, '')
-			);
+				// For example you can remove secure and SameSite security flags so browser can save the cookie in dev env
+				const adaptCookiesForLocalhost = proxyRes.headers['set-cookie'].map((cookie: string) =>
+					cookie.replace(/; secure/gi, '').replace(/; SameSite=None/gi, '')
+				);
 
-			proxyRes.headers['set-cookie'] = adaptCookiesForLocalhost;
+				proxyRes.headers['set-cookie'] = adaptCookiesForLocalhost;
 
-			proxyOptions?.onProxyRes?.(proxyRes, ...rest);
-		},
-		onError: (err, ...rest) => {
-			console.error(err);
+				if (proxyOptions.on && typeof proxyOptions.on.proxyRes === 'function') {
+					proxyOptions.on.proxyRes(proxyRes, req, res);
+				}
+			},
+			error: (err: any, req: any, res: any, target: any) => {
+				console.error(err);
 
-			proxyOptions?.onError?.(err, ...rest);
+				if (proxyOptions.on && typeof proxyOptions.on.error === 'function') {
+					proxyOptions.on.error(err, req, res, target);
+				}
+			},
+			// You can add more event handlers here if needed
+			...(proxyOptions.on || {}),
 		},
 	}) as (req: NextApiRequest, res: NextApiResponse<unknown>) => void;
 
