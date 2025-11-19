@@ -1,2 +1,10 @@
 packages:
   - 'packages/**'
+
+engineStrict: true
+
+minimumReleaseAge: 2880
+
+strictDepBuilds: true
+
+strictPeerDependencies: true
