@@ -1,9 +1,45 @@
 packages:
-  - 'packages/**'
+  - packages/**
+
+catalog:
+  '@changesets/cli': ~2.29.7
+  '@commitlint/cli': ~17.8.1
+  '@commitlint/config-conventional': ~17.8.1
+  '@infinumjs/eslint-config-react-ts': ~3.4.0
+  '@infinumjs/eslint-config-react-js': ~3.5.0
+  '@swc/core': ~1.15.2
+  '@swc/jest': ~0.2.39
+  '@types/jest': ~29.1.2
+  '@types/node': ~18.19.130
+  '@types/react-dom': ~18.3.7
+  '@typescript-eslint/eslint-plugin': ~5.62.0
+  '@typescript-eslint/parser': ~5.62.0
+  cli-testing-library: ~2.0.0
+  eslint: ~8.57.1
+  eslint-plugin-jsx-a11y: ~6.10.2
+  eslint-plugin-react: ~7.31.11
+  eslint-plugin-react-hooks: ~7.0.1
+  http-proxy-middleware: 2.0.9
+  husky: ~8.0.3
+  intersection-observer: ~0.12.2
+  jest-environment-jsdom: ~29.3.1
+  next: ^15.4.2
+  plop: ~4.0.4
+  prettier: ~2.8.8
+  react-test-renderer: ~18.2.0
+  ts-jest: ~29.0.5
+  tsup: ^8.5.1
+  turbo: ~1.13.4
 
 engineStrict: true
 
 minimumReleaseAge: 2880
+
+minimumReleaseAgeExclude:
+  - glob@12.0.0
+
+overrides:
+  glob@>=10.2.0 <10.5.0: '>=10.5.0'
 
 strictDepBuilds: true
 
