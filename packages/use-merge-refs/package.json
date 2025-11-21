@@ -1,6 +1,6 @@
 {
 	"name": "@infinum/use-merge-refs",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "An util hook that allows you to easily merge multiple refs into one.",
 	"keywords": [
 		"UseMergeRefs"

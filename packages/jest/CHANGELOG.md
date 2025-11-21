@@ -1,5 +1,11 @@
 # @infinum/jest
 
+## 3.0.0
+
+### Major Changes
+
+- 363e378: Bump dependencies
+
 ## 2.0.0
 
 ### Major Changes
