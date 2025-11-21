@@ -20,6 +20,7 @@ export function infinumJest() {
 						'@swc/jest',
 						{
 							jsc: {
+								target: 'es2022',
 								transform: {
 									react: { runtime: 'automatic' },
 								},

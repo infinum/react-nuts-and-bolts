@@ -2,9 +2,13 @@
 	"name": "react-nuts-and-bolts",
 	"version": "0.0.0",
 	"description": "A collection of commonly used tools and components that we use everyday at Infinum.",
+	"engines": {
+		"node": "24.11.0"
+	},
+	"author": "Infinum JavaScript Team <hello@infinum.com>",
+	"license": "MIT",
 	"scripts": {
 		"build": "turbo run build --parallel",
-		"preinstall": "npx only-allow pnpm",
 		"prepare": "husky install",
 		"create:pkg": "plop component",
 		"test": "turbo run test --parallel",
@@ -12,52 +16,36 @@
 		"version": "changeset version",
 		"release": "changeset publish",
 		"version:dev": "changeset version --snapshot dev",
-		"release:dev": "changeset publish --tag dev"
+		"release:dev": "changeset publish --tag dev",
+		"lint": "eslint . --ext .ts,.tsx"
 	},
-	"author": "Infinum JavaScript Team <hello@infinum.com>",
-	"license": "MIT",
-	"workspaces": [
-		"packages/*"
-	],
 	"devDependencies": {
-		"@infinumjs/eslint-config-react-ts": "~3.4.0",
+		"@infinumjs/eslint-config-react-js": "catalog:",
+		"@infinumjs/eslint-config-react-ts": "catalog:",
 		"@testing-library/jest-dom": "~5.17.0",
-		"@types/jest": "~29.1.2",
-		"@types/node": "~18.19.120",
-		"@types/react": "~18.3.23",
-		"@types/react-dom": "~18.3.7",
-		"@typescript-eslint/eslint-plugin": "~5.62.0",
-		"@typescript-eslint/parser": "~5.62.0",
-		"eslint": "~8.57.1",
-		"eslint-plugin-jsx-a11y": "~6.10.2",
-		"eslint-plugin-react": "~7.31.11",
-		"eslint-plugin-react-hooks": "~4.6.2",
-		"husky": "~8.0.3",
+		"@types/jest": "catalog:",
+		"@types/node": "catalog:",
+		"@types/react": "~18.3.26",
+		"@types/react-dom": "catalog:",
+		"@typescript-eslint/eslint-plugin": "catalog:",
+		"@typescript-eslint/parser": "catalog:",
+		"eslint": "catalog:",
+		"eslint-plugin-jsx-a11y": "catalog:",
+		"eslint-plugin-react": "catalog:",
+		"eslint-plugin-react-hooks": "catalog:",
+		"husky": "catalog:",
 		"jest": "~29.7.0",
-		"plop": "~3.1.2",
-		"prettier": "~2.8.8",
-		"ts-jest": "~29.0.5",
-		"tsup": "^8.5.0",
-		"turbo": "~1.13.4",
+		"plop": "catalog:",
+		"prettier": "catalog:",
+		"ts-jest": "catalog:",
+		"tsup": "catalog:",
+		"turbo": "catalog:",
 		"typescript": "~4.9.5"
 	},
-	"pnpm": {
-		"overrides": {
-			"react": "^19.1.0",
-			"react-dom": "^18.2.0",
-			"postcss@<8.4.31": ">=8.5.6",
-			"next": "^15.4.2",
-			"http-proxy-middleware@<2.0.7": ">=2.0.7",
-			"http-proxy-middleware@>=1.3.0 <2.0.9": ">=2.0.9",
-			"http-proxy-middleware@>=1.3.0 <2.0.8": ">=2.0.8",
-			"next@<14.2.24": ">=14.2.24",
-			"cross-spawn": "^7.0.6",
-			"next@>=13.0 <14.2.30": ">=14.2.30"
-		}
-	},
 	"dependencies": {
-		"@changesets/cli": "~2.26.2",
-		"@commitlint/cli": "~17.8.1",
-		"@commitlint/config-conventional": "~17.8.1"
-	}
+		"@changesets/cli": "catalog:",
+		"@commitlint/cli": "catalog:",
+		"@commitlint/config-conventional": "catalog:"
+	},
+	"packageManager": "pnpm@10.20.0+sha512.cf9998222162dd85864d0a8102e7892e7ba4ceadebbf5a31f9c2fce48dfce317a9c53b9f6464d1ef9042cba2e02ae02a9f7c143a2b438cd93c91840f0192b9dd"
 }

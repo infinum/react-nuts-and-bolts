@@ -31,34 +31,30 @@ export const createProxy = (apiUrl: Options['target'], options: ICreateProxyOpti
 		cookieDomainRewrite: 'localhost',
 		pathRewrite: { '^/api': '/' },
 		...proxyOptions,
-		on: {
-			proxyRes: (proxyRes: any, req: any, res: any) => {
-				// You can manipulate the cookie here
+		onProxyRes: (proxyRes: any, req: any, res: any) => {
+			// You can manipulate the cookie here
 
-				if (!proxyRes.headers['set-cookie']) {
-					return;
-				}
+			if (!proxyRes.headers['set-cookie']) {
+				return;
+			}
 
-				// For example you can remove secure and SameSite security flags so browser can save the cookie in dev env
-				const adaptCookiesForLocalhost = proxyRes.headers['set-cookie'].map((cookie: string) =>
-					cookie.replace(/; secure/gi, '').replace(/; SameSite=None/gi, '')
-				);
+			// For example you can remove secure and SameSite security flags so browser can save the cookie in dev env
+			const adaptCookiesForLocalhost = proxyRes.headers['set-cookie'].map((cookie: string) =>
+				cookie.replace(/; secure/gi, '').replace(/; SameSite=None/gi, '')
+			);
 
-				proxyRes.headers['set-cookie'] = adaptCookiesForLocalhost;
+			proxyRes.headers['set-cookie'] = adaptCookiesForLocalhost;
 
-				if (proxyOptions.on && typeof proxyOptions.on.proxyRes === 'function') {
-					proxyOptions.on.proxyRes(proxyRes, req, res);
-				}
-			},
-			error: (err: any, req: any, res: any, target: any) => {
-				console.error(err);
+			if (proxyOptions.onProxyRes && typeof proxyOptions.onProxyRes === 'function') {
+				proxyOptions.onProxyRes(proxyRes, req, res);
+			}
+		},
+		onError: (err: any, req: any, res: any, target: any) => {
+			console.error(err);
 
-				if (proxyOptions.on && typeof proxyOptions.on.error === 'function') {
-					proxyOptions.on.error(err, req, res, target);
-				}
-			},
-			// You can add more event handlers here if needed
-			...(proxyOptions.on || {}),
+			if (proxyOptions.onError && typeof proxyOptions.onError === 'function') {
+				proxyOptions.onError(err, req, res, target);
+			}
 		},
 	}) as (req: NextApiRequest, res: NextApiResponse<unknown>) => void;
 

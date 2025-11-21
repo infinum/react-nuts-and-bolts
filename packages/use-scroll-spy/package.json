@@ -42,16 +42,16 @@
 		"@infinum/react-test-utils": "workspace:*",
 		"@testing-library/jest-dom": "~5.16.5",
 		"@testing-library/react": "~13.4.0",
-		"@types/jest": "~29.1.2",
+		"@types/jest": "catalog:",
 		"@types/react": "~18.0.21",
 		"clean-package": "~2.1.1",
-		"intersection-observer": "~0.12.2",
+		"intersection-observer": "catalog:",
 		"jest": "~29.1.2",
-		"react": "~18.2.0",
-		"react-dom": "^18.2.0",
-		"react-test-renderer": "~18.2.0",
+		"react": "~18.3.1",
+		"react-dom": "^18.3.1",
+		"react-test-renderer": "catalog:",
 		"typescript": "~4.8.4",
-		"tsup": "^8.5.0"
+		"tsup": "catalog:"
 	},
 	"peerDependencies": {
 		"react": ">=16.0.0"

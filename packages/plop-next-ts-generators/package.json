@@ -17,11 +17,11 @@
 	"license": "MIT",
 	"devDependencies": {
 		"@infinum/jest": "workspace:*",
-		"cli-testing-library": "~2.0.0",
+		"cli-testing-library": "catalog:",
 		"jest": "~29.1.2",
-		"plop": "3.1.1"
+		"plop": "catalog:"
 	},
 	"peerDependencies": {
-		"plop": ">=3.1.1"
+		"plop": "catalog:"
 	}
 }
