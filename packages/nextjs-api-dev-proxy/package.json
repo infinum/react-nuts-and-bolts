@@ -1,6 +1,6 @@
 {
 	"name": "@infinum/nextjs-api-dev-proxy",
-	"version": "1.1.1",
+	"version": "2.0.0",
 	"description": "Development API proxy for Next.js pages",
 	"keywords": [
 		"NextjsApiDevProxy"

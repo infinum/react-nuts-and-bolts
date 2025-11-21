@@ -13,8 +13,8 @@
 		"create:pkg": "plop component",
 		"test": "turbo run test --parallel",
 		"test:watch": "turbo run test:watch",
-		"version": "changeset version",
-		"release": "changeset publish",
+		"version:prod": "changeset version",
+		"release:prod": "changeset publish",
 		"version:dev": "changeset version --snapshot dev",
 		"release:dev": "changeset publish --tag dev",
 		"lint": "eslint . --ext .ts,.tsx"
